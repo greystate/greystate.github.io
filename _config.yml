@@ -1,0 +1,19 @@
+
+baseurl: ""
+production_url : http://greystate.github.io.com/
+BASE_PATH : http://greystate.dk/
+
+source: .
+destination: _site
+
+highlighter: none
+
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+      type: "posts" # previously `post` in Jekyll 2.2.
+    values:
+      layout: "post"
+      author: Chriztian Steinmeier
+
