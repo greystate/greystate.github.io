@@ -1,0 +1,53 @@
+body {
+  padding-top: constant(safe-area-inset-top);
+  
+  &::after {
+    content: constant(safe-area-inset-top);
+    display: block;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+
+main {
+  max-width: 45em;
+  margin-right: auto;
+  margin-left: auto;
+  
+  > h1 { position: absolute; top: -100%; }
+
+  > a[href="/"] {
+    display: block;
+    margin: 1em auto 0;
+    text-align: center;
+    
+    img {
+      max-width: 100%;
+      transition: opacity 0.3s linear;
+      opacity: 0.1;
+    }
+  }
+}
+
+.post {
+  margin-bottom: 6em;
+}
+
+@media screen and (max-width: 768px) {
+  main {
+    max-width: auto;
+    width: auto;
+    margin-left: 10px;
+    margin-right: 10px;
+    
+    > a[href="/"] {
+      width: 75%;
+    }
+  }
+  
+}
