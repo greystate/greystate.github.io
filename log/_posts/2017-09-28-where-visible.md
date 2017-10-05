@@ -42,7 +42,7 @@ OK, turns out both of these can be improved - the XSLT can do without the string
 </xsl:for-each>
 ```
 
-(If we were *really* doing XSLT and not just a version that's friendlier to developers who hasn't tried something like that, we'd just use apply-templates here and let the match templates do the rest :-)
+(If we were *really* doing XSLT and not just a version that's friendlier to developers who hasn't tried something like that, we'd just use `apply-templates` here and let the match templates do the rest :-)
 
 ### Razor, take 2
 
