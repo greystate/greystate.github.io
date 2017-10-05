@@ -5,9 +5,7 @@ layout: master
 	
 	<h1>{{ site.title }}</h1>
 
-	<a href="/">
-		<img src="/assets/greylogo_opaque.gif" width="400" alt="Greystate Logo">
-	</a>
+	{% include logo.html %}
 
 	{% for post in site.posts %}
 	<section class="post">

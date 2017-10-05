@@ -178,7 +178,7 @@ body {
 a {
   color: #dd4020;
 }
-a:hover {
+a:not([href="/"]):hover {
   -webkit-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
   background: #dd4020;
