@@ -8,7 +8,7 @@ permalink: /:categories/:year/:month/:day/:title/
 source: .
 destination: _site
 
-exclude: [CNAME]
+exclude: [CNAME, src, config.codekit3]
 
 highlighter: none
 
