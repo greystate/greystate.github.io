@@ -3,6 +3,8 @@ baseurl: ""
 production_url : http://greystate.github.io.com/
 BASE_PATH : http://greystate.dk/
 
+permalink: /:categories/:year/:month/:day/:title/
+
 source: .
 destination: _site
 
