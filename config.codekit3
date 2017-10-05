@@ -281,7 +281,7 @@
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
-		"oA": 2,
+		"oA": 1,
 		"oAP": "\/src\/vendor\/prism\/prism-line-numbers.css",
 		"oF": 0,
 		"oS": 0
@@ -301,7 +301,7 @@
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
-		"oA": 2,
+		"oA": 1,
 		"oAP": "\/src\/vendor\/prism\/prism-okaidia.css",
 		"oF": 0,
 		"oS": 0
