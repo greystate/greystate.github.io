@@ -1,16 +1,5 @@
 body {
   padding-top: constant(safe-area-inset-top);
-  
-  &::after {
-    content: constant(safe-area-inset-top);
-    display: block;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
 }
 
 
@@ -38,16 +27,15 @@ main {
   margin-bottom: 6em;
 }
 
-@media screen and (max-width: 768px) {
+.compact-width({
   main {
     max-width: auto;
     width: auto;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: @compact_side_margin;
+    margin-right: @compact_side_margin;
     
     > a[href="/"] {
       width: 75%;
     }
   }
-  
-}
+});

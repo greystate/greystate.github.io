@@ -1,3 +1,5 @@
+html, body { margin: 0; padding: 0; }
+
 html {
   font-size: 65.2%;
 }
@@ -36,21 +38,46 @@ pre {
 	.font-size(13);
 }
 
+code:not([class]) {
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-size: 0.9em;
+  background: #fff;
+  padding: 4px;
+}
+
+kbd {
+  background: #d8dbdb;
+  padding: 2px 4px;
+  border-radius: 0.1em;
+  border: 1px solid outset;
+  display: inline-block;
+}
+
 .compact-width({
 
-  html {
+  xhtml {
     box-shadow: inset 0 0 0 2px rgba(255, 0, 0, 0.25);
   }
   
   body {
-    font-size: 18px;
-    font-size: 1.8rem;
+    font-size: 1.8em;
+  }
+  
+  pre {
+    .font-size(12);
+    
+    &.line-numbers {
+      padding-left: 0.5em;
+
+      .line-numbers-rows { display: none; }
+    }
+    
   }
   
 });
 
 .regular-width({
-  html {
+  xhtml {
     box-shadow: inset 0 0 0 2px rgba(0, 0, 255, 0.25);
   }
 });
