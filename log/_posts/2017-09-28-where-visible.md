@@ -11,7 +11,7 @@ Here's how the Razor and XSLT templates use this convention:
 
 The XSLT version does this:
 
-```xml
+```xml.line-numbers
 <xsl:for-each select="$currentPage/* [@isDoc and string(umbracoNaviHide) != '1']">
 	...
 </xsl:for-each>
@@ -21,7 +21,7 @@ The XSLT version does this:
 
 The Razor snippet puts the selection in a variable first, like this:
 
-```csharp
+```csharp.line-numbers
 var selection = CurrentPage.Children.Where("Visible");
 ```
 
@@ -36,7 +36,7 @@ OK, turns out both of these can be improved - the XSLT can do without the string
 
 ### XSLT, take 2
 
-```xml
+```xml.line-numbers
 <xsl:for-each select="$currentPage/*[@isDoc][not(umbracoNaviHide = 1)]">
 	...
 </xsl:for-each>
@@ -46,7 +46,7 @@ OK, turns out both of these can be improved - the XSLT can do without the string
 
 ### Razor, take 2
 
-```csharp
+```csharp.line-numbers
 var selection = Model.Content.Children.Where(x => x.IsVisible());
 ```
 	
