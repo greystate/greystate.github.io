@@ -6,6 +6,8 @@ BASE_PATH : http://greystate.dk/
 source: .
 destination: _site
 
+exclude: [CNAME]
+
 highlighter: none
 
 defaults:
