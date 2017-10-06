@@ -19,7 +19,7 @@ The XSLT version does this:
 
 ### Razor
 
-The Razor snippet puts the selection in a variable first, like this:
+The Razor snippet creates a selection variable (to iterate over later), like this:
 
 ```csharp.line-numbers
 var selection = CurrentPage.Children.Where("Visible");
@@ -55,6 +55,7 @@ This is using what's called "strongly typed" access and instead of a magic strin
 As I said in a Slack channel recently, when asking about this:
 
 > [The Razor snippets are] using "magic" if you don't know anything about how you "hide" a page in Umbraco :-)
+
 
 
 
