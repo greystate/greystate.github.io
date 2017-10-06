@@ -181,15 +181,16 @@ body {
   background: #f3f3f3;
 }
 a {
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   color: #dd4020;
 }
 a:not([href="/"]):hover {
-  -webkit-transition: all 0.2s ease-in;
-  transition: all 0.2s ease-in;
   background: #dd4020;
   -webkit-box-shadow: 0 0 0 4px #dd4020;
           box-shadow: 0 0 0 4px #dd4020;
   text-decoration: none;
+  border-radius: 2px;
   color: #f3f3f3;
 }
 h1,
