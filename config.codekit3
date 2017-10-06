@@ -327,16 +327,6 @@
 		"oF": 0,
 		"oS": 0
 		},
-	"\/src\/vendor\/prism\/prism-razor.js": {
-		"ft": 64,
-		"ma": 0,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/assets\/prism-razor.min.js",
-		"oF": 0,
-		"sC": 0,
-		"tS": 0
-		},
 	"\/src\/vendor\/prism\/prism.js": {
 		"ft": 64,
 		"ma": 0,
