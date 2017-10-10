@@ -11,7 +11,7 @@ Here's how the Razor and XSLT templates use this convention:
 
 The XSLT version does this:
 
-```xml.line-numbers
+```xslt.line-numbers
 <xsl:for-each select="$currentPage/* [@isDoc and string(umbracoNaviHide) != '1']">
 	...
 </xsl:for-each>
@@ -36,7 +36,7 @@ OK, turns out both of these can be improved - the XSLT can do without the string
 
 ### XSLT, take 2
 
-```xml.line-numbers
+```xslt.line-numbers
 <xsl:for-each select="$currentPage/*[@isDoc][not(umbracoNaviHide = 1)]">
 	...
 </xsl:for-each>
