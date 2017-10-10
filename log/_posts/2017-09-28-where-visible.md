@@ -25,24 +25,12 @@ The Razor snippet creates a selection variable (to iterate over later), like thi
 var selection = CurrentPage.Children.Where("Visible");
 ```
 
-Ways in which I think the XSLT version better tells what's going on:
-
-1. It uses the actual alias of the property that's causing the exclusion, instead of a magic string.
+I think the XSLT version is *way better* at telling you what's going on, because it uses the actual alias of the property that's causing the exclusion, instead of a magic string.
 
 
-## Rewrite
+## Rewrites
 
-OK, turns out both of these can be improved - the XSLT can do without the string conversion and the Razor snippet apparently is using *dynamics* which is no-one's favorite, these days. Or so I'm told :-)
-
-### XSLT, take 2
-
-```xslt.line-numbers
-<xsl:for-each select="$currentPage/*[@isDoc][not(umbracoNaviHide = 1)]">
-	...
-</xsl:for-each>
-```
-
-(If we were *really* doing XSLT and not just a version that's friendlier to developers who hasn't tried something like that, we'd just use `apply-templates` here and let the match templates do the rest :-)
+As it turns out - the Razor snippet is apparently using *dynamics*, which is no-one's favorite, these days. Or so I'm told :-) So we're supposed to use this snippet instead:
 
 ### Razor, take 2
 
@@ -51,6 +39,14 @@ var selection = Model.Content.Children.Where(x => x.IsVisible());
 ```
 	
 This is using what's called "strongly typed" access and instead of a magic string we now have a magic method...
+
+And while we're at it - the XSLT isn't really that great either — I'd do a similar thing, setting a variable instead:
+
+### XSLT, take 2
+
+```xslt.line-numbers
+<xsl:variable name="selection" select="$currentPage/*[@isDoc][not(umbracoNaviHide = 1)]" />
+```
 
 As I said in a Slack channel recently, when asking about this:
 
