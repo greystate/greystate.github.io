@@ -1,0 +1,214 @@
+/*
+	CSS for the page about CSS Variables TextMate Bundle
+		(c) Copyright 2008 Chriztian Steinmeier
+*/
+
+@variables {
+	baseFontSize: small;
+	doubleSize: 2em;
+	
+	backColor: #fff;
+	hiliteColor: #feed55;
+	gutter: 15px;
+	PI: #314159;
+	
+	codeColor: #211;
+	codeBackColor: #cddccd;
+	
+	listWidth: 26em;
+
+	TextMateColor: #550c5e;
+	sidebarBackColor: #f4ecfc;
+	fadeToBack: #bea0c6;
+	
+	radius: 5px;
+	shadow: 0 3px 25px #666;
+	
+	todoIndent: 1em;
+	todoBoxSize: 10px;
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: "Lucida Grande", Tahoma, Verdana, sans-serif;
+	font-size: small; /* var(baseFontSize) */
+	background-color: #fff; /* var(backColor) */
+	color: #314159; /* var(PI) */
+}
+
+h1 {
+	margin-left: 15px; /* var(gutter) */
+	font-size: 2em;
+	letter-spacing: -1px;
+	color: #550c5e; /* var(TextMateColor) */
+}
+
+h2 {
+	color: #550c5e; /* var(TextMateColor) */
+	margin: 1em 0 0;
+	border-bottom: 1px dotted;
+	border-color: #bea0c6; /* var(fadeToBack) */
+	width: 26em; /* var(listWidth) */
+}
+
+hr {
+	height: 1px;
+	width: 80%;
+	color: #000;
+	padding: 0;
+	margin: 1em 0;
+}
+
+p {
+	margin: 0.2em 0 1em;
+}
+
+code {
+	color: #211; /* var(codeColor) */
+}
+
+pre {
+	padding: 15px; /* var(gutter) */
+}
+
+div#main {
+	margin: 15px; /* var(gutter) */
+}
+
+div#contentlist {
+	float: right;
+	width: 26em; /* var(listWidth) */
+	margin: 15px; /* var(gutter) */
+	background: #f4ecfc; /* var(sidebarBackColor) */
+}
+
+#contentlist h2 {
+	margin: 0;
+	line-height: 1.5;
+	color: #fff; /* var(backColor) */
+	background-color: #550c5e; /* var(TextMateColor) */
+	text-align: center;
+	letter-spacing: -1px;
+	font-weight: normal;
+	border: none;
+	width: auto;
+}
+
+#contentlist h3 {
+	background: #bea0c6; /* var(fadeToBack) */
+	color: #f4ecfc; /* var(sidebarBackColor) */
+	font-size: 1.6em;
+	line-height: 1;
+	height: 16px;
+	margin: 0;
+	padding: 4px 1em 0;
+	text-transform: uppercase;
+	text-align: right;
+	z-index: 0;
+}
+
+dl {
+	width: 26em; /* var(listWidth) */
+}
+
+dt {
+	font-weight: bold;
+	margin: 1em;
+	width: 24em;
+	border-bottom: 1px solid #e7e7e7;
+	border-bottom-color: #000;
+}
+
+dd {
+	margin: 0 1em 0.5em 1.5em;
+	padding: 0;
+}
+
+kbd.shortcut {
+	background: #d9d9d9;
+	color: #000;
+	margin: -0.8em 0 0;
+	font-weight: normal;
+	padding: 2px 6px;
+	text-align: right;
+	z-index: 10;
+}
+
+/* Cutting Corners */
+#contentlist {
+	-webkit-box-shadow: 0 3px 25px #666; /* var(shadow) */
+}
+
+#contentlist,
+kbd.shortcut {
+	-webkit-border-radius: 5px; /* var(radius) */
+	-moz-border-radius: 5px; /* var(radius) */
+}
+
+#contentlist kbd.shortcut {
+	float: right;
+}
+
+#contentlist h2 {
+	-webkit-border-top-left-radius: 5px; /* var(radius) */
+	-webkit-border-top-right-radius: 5px; /* var(radius) */
+	-moz-border-radius-topleft: 5px; /* var(radius) */
+	-moz-border-radius-topright: 5px; /* var(radius) */
+}
+
+#contentlist {
+	border-width: 4px;
+	border-style: groove ridge ridge groove; /* Yay! My 'Double Border Trick' */
+	border-color: #550c5e; /* var(TextMateColor) */
+}
+
+ul {
+	list-style: square;
+	margin: 1em; /* var(todoIndent) */
+	padding: 0;
+}
+
+ul li {
+	margin: 0;
+	margin-left: 1em; /* var(todoIndent) */
+	padding: 0;
+}
+
+.todos li.done {
+	text-decoration: line-through;
+	font-size: smaller;
+}
+
+li kbd.shortcut {
+	float: none;
+}
+
+ol {
+	font-family: Monaco, "Courier New", monospace;
+	padding: 15px; /* var(gutter) */
+	width: 26em; /* var(listWidth) */
+}
+
+ol.demo-modes {
+	list-style-type: lower-alpha;	
+}
+
+ol.demo-modes li {
+	border-bottom: 1px dotted #666;
+}
+
+div#credits {
+	text-align: right;
+	margin-right: 15px; /* var(gutter) */
+	font-weight: bold;
+	font-style: italic;
+	padding: 1em auto;
+}
+
+
+
+
