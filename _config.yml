@@ -21,3 +21,5 @@ defaults:
       layout: "post"
       author: Chriztian Steinmeier
 
+plugins:
+  - jekyll-feed
