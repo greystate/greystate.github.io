@@ -1,0 +1,195 @@
+// "Cobalt" theme for Prism
+// Adapted from Wes Bos's "Cobalt" Scheme for VS Code
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #fff;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #193549;
+	
+	&::after {
+		display: block;
+		position: absolute;
+		top: 3px;
+		right: 3px;
+		background: rgba(250, 250, 250, 0.15);
+		color: rgba(255, 255, 255, 0.5);
+		border-radius: 2px;
+		padding: 2px 4px;
+	}
+}
+
+pre[class*="language-csharp"]::after { content: "C#" }
+pre[class*="language-xml"]::after { content: "XML" }
+pre[class*="language-xslt"]::after { content: "XSLT" }
+pre[class*="language-javascript"]::after { content: "JavaScript" }
+pre[class*="language-html"]::after { content: "HTML" }
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #0088ff;
+	font-style: italic;
+}
+
+//// START
+
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+
+//// END
+
+.token {
+	&.comment {
+	}
+
+	&.constant {
+		color: #ff628c;
+	}
+
+	&.entity {
+		color: #ffc600;
+	}
+
+	&.invalid {
+	  color: #800f00;
+	}
+
+	&.keyword,
+	&.storage {
+		color: #ff9d00;
+	}
+
+	&.meta {
+		color: #9effff;
+
+		&.brace {
+			color: #e1efff;
+		}
+	}
+
+	&.string {
+		color: #a5ff90;
+
+		&.template {
+			color: #3ad900;
+		}
+	}
+
+	&.support {
+		color: #80ffbb;
+	}
+
+	&.function {
+		color: #ff9d00;
+	}
+
+	&.variable {
+		color: #e1efff;
+	}
+
+	&.element, &.tag {
+		color: #9effff;
+	}
+}
