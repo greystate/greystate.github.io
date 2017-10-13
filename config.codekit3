@@ -287,22 +287,15 @@
 		"sM": 1,
 		"sU": 0
 		},
-	"\/src\/vendor\/prism\/prism-cobalt.less": {
-		"aP": 1,
-		"bl": 1,
-		"dJ": 0,
-		"ft": 1,
-		"ie": 1,
-		"iI": 0,
+	"\/src\/vendor\/prism\/cobalt2.prism.css": {
+		"aP": 0,
+		"bl": 0,
+		"ft": 16,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/src\/vendor\/prism\/prism-cobalt.css",
-		"oF": 2,
-		"oS": 0,
-		"rU": 0,
-		"sI": 0,
-		"sM": 1,
-		"sU": 0
+		"oAP": "\/src\/vendor\/prism\/cobalt2.prism.css",
+		"oF": 0,
+		"oS": 0
 		},
 	"\/src\/vendor\/prism\/prism-csharp.js": {
 		"ft": 64,
