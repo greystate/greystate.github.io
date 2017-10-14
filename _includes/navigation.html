@@ -1,0 +1,7 @@
+<nav class="mainnav">
+	<ul>
+		{% for item in site.data.navigation %}
+		  <li><a href="{{ item.url }}"{% if item.url == page.url %}class="selected"{% endif %}>{{ item.name }}</a></li>
+		{% endfor %}
+	</ul>
+</nav>

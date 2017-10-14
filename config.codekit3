@@ -21,6 +21,12 @@
 		"oAP": "\/_config.yml",
 		"oF": 0
 		},
+	"\/_data\/navigation.yml": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/_data\/navigation.yml",
+		"oF": 0
+		},
 	"\/_includes": {
 		"ft": 65536,
 		"oA": 1,
@@ -229,6 +235,23 @@
 		"ma": 0,
 		"oA": 1,
 		"oAP": "\/assets\/mixins.css",
+		"oF": 0,
+		"oS": 0,
+		"rU": 0,
+		"sI": 0,
+		"sM": 1,
+		"sU": 0
+		},
+	"\/src\/navigation.less": {
+		"aP": 1,
+		"bl": 1,
+		"dJ": 0,
+		"ft": 1,
+		"ie": 1,
+		"iI": 0,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/assets\/navigation.css",
 		"oF": 0,
 		"oS": 0,
 		"rU": 0,
