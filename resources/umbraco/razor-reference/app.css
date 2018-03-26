@@ -419,6 +419,8 @@ pre .line-highlight {
 }
 .property h2,
 .function h2 {
+  font-family: 'inconsolata', 'Andale Mono', Courier, monospace;
+  font-weight: normal;
   color: #413758;
 }
 .property h2.is-ref,
@@ -496,6 +498,9 @@ pre .line-highlight {
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
 }
 .category > header h2 {
+  font-family: 'tenso', Helvetica, sans-serif;
+  font-size: 22px;
+  font-size: 2.2rem;
   margin: 0;
 }
 .category > header h2 + p {
@@ -545,6 +550,18 @@ pre .line-highlight {
 .components .forkme {
   position: absolute;
 }
+.masthead {
+  max-width: 80ch;
+  padding: 1em 0 2em;
+}
+.masthead h1 {
+  font-family: 'tenso', Helvetica, sans-serif;
+  font-size: 32px;
+  font-size: 3.2rem;
+  color: #413758;
+  text-align: center;
+  letter-spacing: 0.05em;
+}
 html {
   font-size: 62.5%;
 }
@@ -567,6 +584,10 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(60ch, 1fr));
     grid-gap: 10px;
+  }
+  #ref .masthead {
+    grid-column: 1 / -1;
+    justify-self: center;
   }
   #ref .category {
     margin: unset;
