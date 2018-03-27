@@ -448,6 +448,10 @@ pre .line-highlight {
   text-decoration: underline;
   background: rgba(65, 55, 88, 0.2);
 }
+.property.obsolete,
+.function.obsolete {
+  opacity: 0.3;
+}
 .memberlist {
   margin-left: auto;
   margin-right: auto;

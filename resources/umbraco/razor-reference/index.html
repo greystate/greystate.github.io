@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Umbraco Razor Quick Reference — v0.8.1</title>
+<title>Umbraco Razor Quick Reference — v0.8.2</title>
 <link rel="stylesheet" href="app.css">
 <link rel="stylesheet" href="https://use.typekit.net/vax3dgg.css">
 <script src="app.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,7 +28,10 @@ So you definitely shouldn't be editing it, or you'll end up sad...
 			<a href="https://our.umbraco.org/forum/" target="_blank">a forum</a> or similar…
 		</p>
 	</description><a class="feed" href="dash-feed://http%3A%2F%2Fgreystate.dk%2Fresources%2Fumbraco%2Frazor-reference%2Fumbraco-razor-quick-reference.xml" title="Subscribe to feed for Dash here">Dash Feed</a>
-</div></header><section class="category"><header><h2>IPublishedContent</h2></header><div class="memberlist">
+</div></header><section class="category"><header><h2>IPublishedContent</h2>
+<div class="description"><p>
+			These are all the "native" node properties
+		</p></div></header><div class="memberlist">
 <section class="property" id="CreateDate"><h2><a href="#CreateDate">CreateDate</a></h2>
 <div class="details">
 <div class="usage">
@@ -95,7 +98,7 @@ So you definitely shouldn't be editing it, or you'll end up sad...
 </div>
 </div>
 <div class="description"><p>
-				Returns the value of the specified property as the type <var>T</var>.
+				Returns the value of the specified property as the type <strong>T</strong>.
 			</p></div>
 </div></section><section class="function" id="GetTemplateAlias"><h2><a href="#GetTemplateAlias">GetTemplateAlias()</a></h2>
 <div class="details">
@@ -125,7 +128,9 @@ So you definitely shouldn't be editing it, or you'll end up sad...
 <div class="description"><p></p></div>
 </div></section><section class="property" id="Parent"><h2><a href="#Parent">Parent</a></h2>
 <div class="details">
-<div class="usage"><code>.Parent</code></div>
+<div class="usage">
+<code>.Parent</code> ⇒ <var>node</var>
+</div>
 <div class="description"><p>A reference to the node's parent</p></div>
 </div></section><section class="property" id="Path"><h2><a href="#Path">Path</a></h2>
 <div class="details">
@@ -242,17 +247,40 @@ So you definitely shouldn't be editing it, or you'll end up sad...
 </div>
 </div>
 <div class="description"><p></p></div>
-</div></section><section class="property" id="Children"><h2><a href="#Children">Children</a></h2>
+</div></section><section class="property" id="ChildrenProperty"><h2><a href="#ChildrenProperty">Children</a></h2>
 <div class="details">
-<div class="usage"><code>.Children</code></div>
-<div class="description"><p></p></div>
+<div class="usage">
+<code>.Children</code> ⇒ <var>collection</var>
+</div>
+<div class="description"><p>
+				Gets the children of the node, sorted by their <a class="ref" href="#SortOrder">SortOrder</a>.
+			</p></div>
+</div></section><section class="function" id="Children"><h2><a href="#Children">Children()</a></h2>
+<div class="details">
+<div class="usage">
+<div>
+<code>.Children()</code> ⇒ <var>collection</var>
+</div>
+<div>
+<code>.Children(<var>alias</var>, <var>alias</var> [, <var>alias …</var>])</code> ⇒ <var>collection</var>
+</div>
+<div>
+<code>.Children(lambda <var>predicate</var>)</code> ⇒ <var>collection</var>
+</div>
+</div>
+<div class="description"><p>
+				Gets the children of the node, sorted by their <a class="ref" href="#SortOrder">SortOrder</a>.
+			</p></div>
+<div class="note"><p>
+				Using this with no arguments is the same as using the <a class="ref" href="#ChildrenProperty">Children</a> property. Just included for consistency.
+			</p></div>
 </div></section><section class="function" id="Children&lt;T&gt;"><h2><a href="#Children&lt;T&gt;">Children&lt;T&gt;()</a></h2>
 <div class="details">
 <div class="usage"><div>
 <code>.Children&lt;T&gt;()</code> ⇒ <var>collection</var>
 </div></div>
 <div class="description"><p>
-				Returns a collection of the children of type <strong>T</strong>.
+				Returns the children of the specific type <strong>T</strong>.
 			</p></div>
 <div class="example language-csharp">
 <h3>Example</h3>
@@ -288,7 +316,9 @@ var newsItems = Model.Children&lt;NewsItem&gt;();
 		</p></div></header><div class="memberlist">
 <section class="property" id="Parent"><h2 class="is-ref"><a href="#Parent">Parent</a></h2>
 <div class="details">
-<div class="usage"><code>.Parent</code></div>
+<div class="usage">
+<code>.Parent</code> ⇒ <var>node</var>
+</div>
 <div class="description"><p>A reference to the node's parent</p></div>
 </div></section><section class="function" id="AncestorOrSelf"><h2><a href="#AncestorOrSelf">AncestorOrSelf()</a></h2>
 <div class="details"><div class="usage">
@@ -304,7 +334,7 @@ var newsItems = Model.Children&lt;NewsItem&gt;();
 <div>
 <code>.AncestorOrSelf(string <var>nodeTypeAlias</var>)</code> ⇒ <var>node</var>
 </div>
-</div></div></section><section class="function" id="Down"><h2><a href="#Down">Down()</a></h2>
+</div></div></section><section class="obsolete function" id="Down"><h2><a href="#Down">Down()</a></h2>
 <div class="details">
 <div class="usage">
 <div>
@@ -326,7 +356,14 @@ var newsItems = Model.Children&lt;NewsItem&gt;();
 <div class="description"><p></p></div>
 </div></section><section class="function" id="FirstChild"><h2><a href="#FirstChild">FirstChild()</a></h2>
 <div class="details">
-<div class="usage"><div><code>.FirstChild(string <var>alias</var>)</code></div></div>
+<div class="usage">
+<div><code>.FirstChild([string <var>alias</var>])</code></div>
+<div><code>.FirstChild(lambda <var>predicate</var>)</code></div>
+</div>
+<div class="description"><p></p></div>
+</div></section><section class="function" id="FirstChild&lt;T&gt;"><h2><a href="#FirstChild&lt;T&gt;">FirstChild&lt;T&gt;()</a></h2>
+<div class="details">
+<div class="usage"><div><code>.FirstChild&lt;T&gt;([lambda <var>func</var>])</code></div></div>
 <div class="description"><p></p></div>
 </div></section><section class="function" id="FirstOrDefault"><h2><a href="#FirstOrDefault">FirstOrDefault()</a></h2>
 <div class="details">
@@ -357,7 +394,7 @@ var newsItems = Model.Children&lt;NewsItem&gt;();
 <code>.LastOrDefault()</code> ⇒ <var>node</var>
 </div></div>
 <div class="description"><p></p></div>
-</div></section><section class="function" id="Next"><h2><a href="#Next">Next()</a></h2>
+</div></section><section class="obsolete function" id="Next"><h2><a href="#Next">Next()</a></h2>
 <div class="details">
 <div class="usage">
 <div>
@@ -371,6 +408,14 @@ var newsItems = Model.Children&lt;NewsItem&gt;();
 <div class="warning note"><p>
 				Obsolete - use <a class="ref" href="#FollowingSibling">FollowingSibling()</a> instead.
 			</p></div>
+</div></section><section class="function" id="Parent&lt;T&gt;"><h2><a href="#Parent&lt;T&gt;">Parent&lt;T&gt;()</a></h2>
+<div class="details">
+<div class="usage"><div>
+<code>.Parent&lt;T&gt;()</code> ⇒ <var>T</var>
+</div></div>
+<div class="description"><p>
+				Returns the parent if it has the specific type <strong>T</strong>, otherwise <code>null</code>.
+			</p></div>
 </div></section><section class="function" id="PrecedingSibling"><h2><a href="#PrecedingSibling">PrecedingSibling()</a></h2>
 <div class="details"><div class="usage">
 <div>
@@ -382,7 +427,7 @@ var newsItems = Model.Children&lt;NewsItem&gt;();
 <div>
 <code>.PrecedingSibling(string <var>nodeTypeAlias</var>)</code> ⇒ <var>node</var>
 </div>
-</div></div></section><section class="function" id="Previous"><h2><a href="#Previous">Previous()</a></h2>
+</div></div></section><section class="obsolete function" id="Previous"><h2><a href="#Previous">Previous()</a></h2>
 <div class="details">
 <div class="usage">
 <div>
@@ -396,7 +441,7 @@ var newsItems = Model.Children&lt;NewsItem&gt;();
 <div class="warning note"><p>
 				Obsolete - use <a class="ref" href="#PrecedingSibling">PrecedingSibling()</a> instead.
 			</p></div>
-</div></section><section class="function" id="Sibling"><h2><a href="#Sibling">Sibling()</a></h2>
+</div></section><section class="obsolete function" id="Sibling"><h2><a href="#Sibling">Sibling()</a></h2>
 <div class="details">
 <div class="usage">
 <div>
@@ -422,7 +467,7 @@ var newsItems = Model.Children&lt;NewsItem&gt;();
 <code>.SingleOrDefault()</code> ⇒ <var>node</var>
 </div></div>
 <div class="description"><p></p></div>
-</div></section><section class="function" id="Up"><h2><a href="#Up">Up()</a></h2>
+</div></section><section class="obsolete function" id="Up"><h2><a href="#Up">Up()</a></h2>
 <div class="details">
 <div class="usage">
 <div>
@@ -444,9 +489,20 @@ var newsItems = Model.Children&lt;NewsItem&gt;();
 <code>.GetCulture([uri <var>current</var>])</code> ⇒ <var>System.Globalization.CultureInfo</var>
 </div></div>
 <div class="description"><p>
-				Gets the culture that would be selected to render a specified content,
+				Gets the culture that would be used to render the content,
 				within the context of a specified current request.
 			</p></div>
+<div class="example language-csharp">
+<h3>Example</h3>
+<pre><code>
+@{
+	var siteRoot = Model.Site();
+}
+&lt;html lang="@siteRoot.GetCulture()"&gt;
+...
+&lt;/html&gt;
+</code></pre>
+</div>
 </div></section><section class="function" id="HasProperty"><h2><a href="#HasProperty">HasProperty()</a></h2>
 <div class="details">
 <div class="usage"><div>
@@ -592,8 +648,15 @@ var widgets = Model.Children&lt;Widget&gt;().RandomOrder().FirstOrDefault();
 <code>.Where(lambda <var>func</var>)</code> ⇒ <var>collection</var>
 </div></div>
 <div class="description"><p>
-				
+				Provides a way to filter a collection of nodes, by using a lambda function that
+				returns `true` if the node should be included and `false` if not.
 			</p></div>
+<div class="example language-csharp">
+<h3>Example</h3>
+<pre><code>
+var breaking = Model.Children&lt;NewsItem&gt;().Where(x =&gt; x.Category == "breaking");
+</code></pre>
+</div>
 </div></section>
 </div></section><section class="category"><header><h2>Aggregate Functions</h2>
 <div class="description"><p>
