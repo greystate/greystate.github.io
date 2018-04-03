@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Git Subtree Merge Commands Tool</title>
+	<meta name="description" content="A simple tool for generating the git commands needed for a subtree merge operation">
+	<link rel="stylesheet" href="css/app.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+
+<section>
+	<header>
+		<h1>Using Git "subtree merge"</h1>
+	</header>
+	
+	<div>So, you want to grab the contents of the <input autocomplete="off" type="text" placeholder="css" name="remote_folder" value="umbraco/xslt/mocks" id="remote_folder"> folder </div>
+	<div>
+		from the <input autocomplete="off" autocapitalize="off" autocorrect="off" type="text" placeholder="master" name="branch_name" value="master" id="branch_name"> branch of
+		<input autocomplete="off" autocapitalize="off" autocorrect="off" type="text" name="github_user" placeholder="greystate" value="greystate" id="github_user">'s
+		<input autocomplete="off" autocapitalize="off" autocorrect="off" type="text" placeholder="css-secret-sauce" name="repo_name" value="library-mock" id="repo_name"> repository
+	</div>
+	<div>and place them in the <input autocomplete="off" autocapitalize="off" autocorrect="off" type="text" name="local_folder" placeholder="less" value="mocks" id="local_folder"> folder of your own repository?</div>
+
+	<p>
+		Well, here's a secret invocation of commands that'll let you do just that:
+	</p>
+
+	<pre id="output">
+
+	</pre>
+
+	<p>
+		&#8212;and here's a <a rel="bookmark" href="?rf=umbraco/xslt/mocks&amp;b=master&amp;u=greystate&amp;r=library-mock&amp;lf=mocks">permanent link</a> for that setup.
+	</p>
+	
+	<footer>
+		Chriztian Steinmeier, <a href="https://twitter.com/greystate">@greystate</a>
+	</footer>
+</section>
+
+<script src="scripts/app.js"></script>
+
+</body>
+</html>

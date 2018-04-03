@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<title>TextMate Bundle for CSS Variables</title>
+	<link rel="stylesheet" href="css/own-medicine.css" type="text/css" media="screen" charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+
+<h1>CSS Variables TextMate Bundle</h1>
+
+<div id="main">
+	<p>
+		First, read about <a href="http://disruptive-innovations.com/zoo/cssvariables/" rel="external">CSS Variables</a>
+		and why they are cool. Then come back here and finish the job...
+	</p>
+	
+	<hr />
+	
+	<p>
+		Download the <a href="bundle/CSS_Variables.zip">ZIP file</a>, extract it and double-click the bundle file
+		to install in TextMate. It also works as expected with
+		<a href="http://www.e-texteditor.com" rel="external" title="TextMate on Windows">E-TextEditor</a>
+		- just extract the files and copy the <code>CSS Variables.tmbundle</code> directory to your Bundles directory (somewhere
+		close to <code>C:\Documents and Settings\[USER_NAME]\Application Data\e\Bundles</code>), then use the
+		<code>Reload Bundles</code> command.
+	</p>
+	
+	<div id="contentlist">
+		<h2>Bundle Contents</h2>
+		
+		<h3>Commands</h3>
+		<dl>
+			<dt>Build CSS <kbd title="Keyboard Shortcut" class="shortcut">&#x2318;R</kbd></dt>
+			<dd>
+				The one you'd use while developing, since it retains the variables at-rule and keeps
+				track of the replaced variables.
+			</dd>
+		
+			<dt>Freeze CSS <kbd title="Keyboard Shortcut" class="shortcut">&#x2303;&#x21E7;&#x2318;F</kbd></dt>
+			<dd>
+				This is the &quot;no turning back&quot; version of the above, because it erases its tracks upon
+				invocation... use for deploying a <em>clean</em> CSS file.
+			</dd>
+		</dl>
+	
+		<h3>Snippets</h3>
+		<dl>
+			<dt>CSS @variables <kbd title="Tab Trigger" class="shortcut">vars&#x21E5;</kbd></dt>
+			<dd>
+				Expands to the @variables at-rule where you define your variables.
+				<em>This should be the first at-rule in the stylesheet!</em>
+			</dd>
+		
+			<dt>CSS var() <kbd title="Tab Trigger" class="shortcut">var&#x21E5;</kbd></dt>
+			<dd>Expands to a single variable replacement</dd>
+		</dl>
+	</div>
+	
+	<h2>Get Started Now</h2>
+	<p>
+		Using the bundle is very easy - just create a new document <kbd title="Keyboard Shortcut" class="shortcut">&#x2318;N</kbd>,
+		switch to the CSS Language <kbd title="Keyboard Shortcut" class="shortcut">&#x2303;&#x2325;&#x21E7;C</kbd> and
+		type <kbd>vars</kbd>... then hit the <kbd title="TAB" class="shortcut">&#x21E5;</kbd> 
+		(TAB) key, and you're already on your way!
+	</p>
+	<p>
+		Check the sidebar for a list of what's currently included in the bundle.
+	</p>
+		
+	<h2>Todo List</h2>
+	<p>
+		The Bundle does a couple of key things, but there's always room for improvements, so - in
+		no particular order, this is the list of features I'd <em>like</em> to add, some day:
+	</p>
+	
+	<ul class="todos">
+		<li>Add scope(s) to the CSS language parser to allow for syntax colouring</li>
+		<li>Add a Command for restoring replacements to their initial <code>var()</code> references</li>
+		<li>Create a "Toggle Variable Display" command <kbd title="Keyboard Shortcut" class="shortcut">&#x21E7;&#x2303;V</kbd>
+			that toggles the current line between <var>var()</var> [<em>a</em>] and
+			<var>development</var> [<em>b</em>] modes, e.g.:
+			<ol class="demo-modes">
+				<li><code>color: var(standardColor);</code></li>
+				<li><code>color: #fff; <em>/* var(standardColor) */</em></code></li>
+			</ol>
+		</li>
+		<li>Put the source in Subversion (or on Github if I get adventurous)</li>
+	</ul>
+	
+	<h2>Caveats</h2>
+	<ul class="caveats">
+		<li>Since the entire value of a rule is replaced, you cannot use a variable replacement as a
+			single value in a shorthand rule, e.g. the following won't work:
+<pre><code>@variables {
+    borderWidth: 2px;
+    borderColor: #911;
+}
+div {
+    border: var(borderWidth) solid var(borderColor);
+}</code></pre>
+			but this will:
+<pre><code>@variables {
+    borderSettings: 2px solid #911;
+}
+
+div {
+    border: var(borderSettings);
+}</code></pre>
+		</li>
+		<li>When using the <em>Freeze CSS</em> command, you get some whitespace for free before the
+			first rule in the resulting file... :-)</li>
+	</ul>
+	
+	<div id="disclamer">
+		<h2>Disclaimer</h2>
+		<p>
+			Do whatever you like with this, but please... don't hold me responsible for anything you accidentally
+			lose while doing so, okay?
+		</p>
+	</div>
+	
+	<div id="credits">
+	<p>- Chriztian Steinmeier, May 2008. &lt;chriztian [at] steinmeier [dot] dk&gt;</p>
+	</div>
+	
+</div>
+
+</body>
+</html>
