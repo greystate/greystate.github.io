@@ -7,21 +7,24 @@
 		"uuidString": "CB55B564-1776-49BC-9698-C0F284B2B3BE"
 		}
 	],
-"creatorBuild": "25900",
+"creatorBuild": "26330",
 "files": {
 	"\/.gitignore": {
+		"cB": 0,
 		"ft": 8192,
 		"oA": 1,
 		"oAP": "\/.gitignore",
 		"oF": 1
 		},
 	"\/_config.yml": {
+		"cB": 0,
 		"ft": 8192,
 		"oA": 1,
 		"oAP": "\/_config.yml",
 		"oF": 0
 		},
 	"\/_data\/navigation.yml": {
+		"cB": 0,
 		"ft": 8192,
 		"oA": 2,
 		"oAP": "\/_data\/navigation.yml",
@@ -96,12 +99,14 @@
 		"q": 100
 		},
 	"\/CNAME": {
+		"cB": 0,
 		"ft": 8192,
 		"oA": 1,
 		"oAP": "\/CNAME",
 		"oF": 1
 		},
 	"\/index.html": {
+		"cB": 0,
 		"ft": 8192,
 		"oA": 1,
 		"oAP": "\/index.html",
@@ -112,6 +117,218 @@
 		"oA": 1,
 		"oAP": "\/build\/log",
 		"oF": 0
+		},
+	"\/resources\/css-variables\/bundle\/CSS_Variables.zip": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/resources\/css-variables\/bundle\/CSS_Variables.zip",
+		"oF": 0
+		},
+	"\/resources\/css-variables\/css\/own-medicine.css": {
+		"aP": 0,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 2,
+		"oAP": "\/resources\/css-variables\/css\/own-medicine.css",
+		"oF": 0,
+		"oS": 0
+		},
+	"\/resources\/css-variables\/index.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/resources\/css-variables\/index.html",
+		"oF": 0
+		},
+	"\/resources\/css\/sitenav\/index.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/resources\/css\/sitenav\/index.html",
+		"oF": 0
+		},
+	"\/resources\/css\/sitenav\/sitemap.css": {
+		"aP": 0,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 2,
+		"oAP": "\/resources\/css\/sitenav\/sitemap.css",
+		"oF": 0,
+		"oS": 0
+		},
+	"\/resources\/objredux\/css\/app.css": {
+		"aP": 0,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 2,
+		"oAP": "\/resources\/objredux\/css\/app.css",
+		"oF": 0,
+		"oS": 0
+		},
+	"\/resources\/objredux\/images\/bg_grunge_wall.png": {
+		"ft": 32768,
+		"iS": 152215,
+		"oA": 0,
+		"oAP": "\/resources\/objredux\/images\/bg_grunge_wall.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/resources\/objredux\/index.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/resources\/objredux\/index.html",
+		"oF": 0
+		},
+	"\/resources\/objredux\/scripts\/app.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "\/assets\/app.min.js",
+		"oF": 0,
+		"sC": 0,
+		"tS": 0
+		},
+	"\/resources\/objredux\/scripts\/app.js.map": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/resources\/objredux\/scripts\/app.js.map",
+		"oF": 0
+		},
+	"\/resources\/objredux\/scripts\/libs.min.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "\/assets\/libs.min.min.js",
+		"oF": 0,
+		"sC": 0,
+		"tS": 0
+		},
+	"\/resources\/objredux\/scripts\/templates.min.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "\/assets\/templates.min.min.js",
+		"oF": 0,
+		"sC": 0,
+		"tS": 0
+		},
+	"\/resources\/subtree-merge\/css\/app.css": {
+		"aP": 0,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 2,
+		"oAP": "\/resources\/subtree-merge\/css\/app.css",
+		"oF": 0,
+		"oS": 0
+		},
+	"\/resources\/subtree-merge\/index.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/resources\/subtree-merge\/index.html",
+		"oF": 0
+		},
+	"\/resources\/subtree-merge\/scripts\/app.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "\/assets\/app.min.js",
+		"oF": 0,
+		"sC": 0,
+		"tS": 0
+		},
+	"\/resources\/umbraco\/razor-reference\/app.css": {
+		"aP": 0,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 2,
+		"oAP": "\/resources\/umbraco\/razor-reference\/app.css",
+		"oF": 0,
+		"oS": 0
+		},
+	"\/resources\/umbraco\/razor-reference\/app.min.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "\/assets\/app.min.min.js",
+		"oF": 0,
+		"sC": 0,
+		"tS": 0
+		},
+	"\/resources\/umbraco\/razor-reference\/forkme_right_orange_ff7600.png": {
+		"ft": 32768,
+		"iS": 4452,
+		"oA": 0,
+		"oAP": "\/resources\/umbraco\/razor-reference\/forkme_right_orange_ff7600.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"\/resources\/umbraco\/razor-reference\/index.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/resources\/umbraco\/razor-reference\/index.html",
+		"oF": 0
+		},
+	"\/resources\/umbraco\/razor-reference\/umbraco-razor-quick-reference.xml": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/resources\/umbraco\/razor-reference\/umbraco-razor-quick-reference.xml",
+		"oF": 0
+		},
+	"\/resources\/umbraco\/razor-reference\/Umbraco_Razor_Quick_Reference.tgz": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/resources\/umbraco\/razor-reference\/Umbraco_Razor_Quick_Reference.tgz",
+		"oF": 0
+		},
+	"\/resources\/umbraco\/reference\/css\/docset.css": {
+		"aP": 0,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 2,
+		"oAP": "\/resources\/umbraco\/reference\/css\/docset.css",
+		"oF": 0,
+		"oS": 0
+		},
+	"\/resources\/umbraco\/reference\/index.html": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/resources\/umbraco\/reference\/index.html",
+		"oF": 0
+		},
+	"\/resources\/umbraco\/reference\/scripts\/application.min.js": {
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "\/assets\/application.min.min.js",
+		"oF": 0,
+		"sC": 0,
+		"tS": 0
 		},
 	"\/src\/app.less": {
 		"aP": 1,
@@ -427,6 +644,7 @@
 	"animateCSSInjections": 1,
 	"autoBuildNewItems": 1,
 	"autoprefixerBrowserString": "> 1%, last 2 versions, Firefox ESR, Opera 12.1",
+	"autoprefixerEnableIEGrid": 0,
 	"babelAuxiliaryCommentAfter": "",
 	"babelAuxiliaryCommentBefore": "",
 	"babelConfigFileHandlingType": 0,
@@ -955,6 +1173,10 @@
 			"active": 0,
 			"optionString": "'expression'"
 			},
+		"function-paren-newline": {
+			"active": 0,
+			"optionString": "'multiline'"
+			},
 		"generator-star-spacing": {
 			"active": 0,
 			"optionString": "{'before': true, 'after': false}"
@@ -986,6 +1208,10 @@
 		"id-match": {
 			"active": 0,
 			"optionString": "'^[a-z]+([A-Z][a-z]+)*$', {'properties': false, 'onlyDeclarations': true}"
+			},
+		"implicit-arrow-linebreak": {
+			"active": 0,
+			"optionString": "'beside'"
 			},
 		"indent": {
 			"active": 0,
@@ -1019,9 +1245,9 @@
 			"active": 0,
 			"optionString": "{'beforeBlockComment': true}"
 			},
-		"lines-around-directive": {
+		"lines-between-class-members": {
 			"active": 0,
-			"optionString": "{'before': 'always', 'after': 'always'}"
+			"optionString": "'always', {exceptAfterSingleLine: false}"
 			},
 		"max-depth": {
 			"active": 0,
@@ -1051,6 +1277,10 @@
 			"active": 0,
 			"optionString": "{'max': 1}"
 			},
+		"multiline-comment-style": {
+			"active": 0,
+			"optionString": "'starred-block'"
+			},
 		"multiline-ternary": {
 			"active": 0,
 			"optionString": "'always'"
@@ -1060,14 +1290,6 @@
 			"optionString": "{'newIsCap': true, 'capIsNew': true, 'newIsCapExceptions': [], 'capIsNewExceptions': ['Array', 'Boolean', 'Date', 'Error', 'Function', 'Number', 'Object', 'RegExp', 'String', 'Symbol'], 'properties': true}"
 			},
 		"new-parens": {
-			"active": 0,
-			"optionString": ""
-			},
-		"newline-after-var": {
-			"active": 0,
-			"optionString": "'always'"
-			},
-		"newline-before-return": {
 			"active": 0,
 			"optionString": ""
 			},
@@ -2171,7 +2393,8 @@
 		"createSourceMap": 0,
 		"minifyOutput": 1,
 		"outputStyle": 0,
-		"syntaxCheckerStyle": 0
+		"syntaxCheckerStyle": 0,
+		"transpilerStyle": 1
 		},
 	"languageDefaultsCSS": {
 		"autoOutputAction": 2,
@@ -2204,6 +2427,7 @@
 		"noEscapeInAttributes": 0,
 		"outputFormat": 2,
 		"outputStyle": 0,
+		"shouldRunCacheBuster": 0,
 		"useCDATA": 0,
 		"useDoubleQuotes": 0,
 		"useUnixNewlines": 0
@@ -2245,7 +2469,8 @@
 		"autoOutputPathRelativePath": "public",
 		"autoOutputPathReplace1": "kit",
 		"autoOutputPathReplace2": "html",
-		"autoOutputPathStyle": 1
+		"autoOutputPathStyle": 1,
+		"shouldRunCacheBuster": 0
 		},
 	"languageDefaultsLESS": {
 		"allowInsecureImports": 0,
@@ -2277,13 +2502,13 @@
 		"enableFootnotes": 1,
 		"enableLabels": 1,
 		"enableSmartQuotes": 1,
-		"escapeLineBreaks": 0,
 		"maskEmailAddresses": 1,
 		"outputFormat": 0,
 		"outputStyle": 0,
 		"parseMetadata": 1,
 		"processHTML": 0,
 		"randomFootnoteNumbers": 0,
+		"shouldRunCacheBuster": 0,
 		"useCompatibilityMode": 0
 		},
 	"languageDefaultsOTHER": {
@@ -2292,7 +2517,8 @@
 		"autoOutputPathRelativePath": "",
 		"autoOutputPathReplace1": "",
 		"autoOutputPathReplace2": "",
-		"autoOutputPathStyle": 0
+		"autoOutputPathStyle": 0,
+		"shouldRunCacheBuster": 0
 		},
 	"languageDefaultsPNG": {
 		"autoOutputAction": 0,
@@ -2312,7 +2538,8 @@
 		"autoOutputPathReplace2": "",
 		"autoOutputPathStyle": 0,
 		"compileDebug": 1,
-		"outputStyle": 0
+		"outputStyle": 0,
+		"shouldRunCacheBuster": 0
 		},
 	"languageDefaultsSASS": {
 		"autoOutputAction": 0,
@@ -2340,7 +2567,8 @@
 		"logicless": 0,
 		"outputFormat": 0,
 		"outputStyle": 1,
-		"railsCompatible": 0
+		"railsCompatible": 0,
+		"shouldRunCacheBuster": 0
 		},
 	"languageDefaultsSTYLUS": {
 		"autoOutputAction": 0,
@@ -2393,7 +2621,8 @@
 			"autoOutputPathReplace1": "",
 			"autoOutputPathReplace2": "",
 			"autoOutputPathStyle": 0,
-			"fileExtension": "xslt"
+			"fileExtension": "xslt",
+			"shouldRunCacheBuster": 0
 			}
 		],
 	"overrideExternalServerCSS": 0,
