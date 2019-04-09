@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Max Content Length Calculator</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="../../subtree-merge/css/app.css">
+	<style>
+		body { font-size: 150%; }
+		main { margin: 2em auto; max-width: 80%;}
+		input[type="text"] { text-align: right; font-size: inherit; }
+		input[type="text"]::placeholder { color: #888; }
+		code { font-family: Inconsolata, 'Courier New', monospace; color: #900; }
+		var { background: #fc08; color: #222; font-weight: bold; }
+		ul { list-style: square; margin: 0; padding-left: 1em; }
+	</style>
+</head>
+<body>
+
+<main>
+
+<label for="megabytes">I want to be able to upload a</label>
+<input autofocus type="text" name="megabytes" size="5" value="" id="megabytes" placeholder="50"> MB file to the Media section.
+
+<div id="output">
+<p>
+	Alrighty, then set these in the <em>Web.config</em> file:
+</p>
+
+<ul>
+	<li>
+		Set <code title="Yeah, this is sort of an XPath to the setting...">/configuration/<wbr>system.web/<wbr>httpRuntime/<wbr>@maxRequestLength="<var id="kilobytes">512000</var>"</code>
+	</li>
+	<li>
+		Set <code>/configuration/<wbr>system.webServer/<wbr>security/<wbr>requestFiltering/<wbr>requestLimits/<wbr>@maxAllowedContentLength="<var id="bytes">524288000</var>"</code>
+	</li>
+</ul>
+
+</div>
+</main>
+
+<script>
+const mega = document.querySelector('#megabytes')
+mega.addEventListener('keyup', function(event) {
+	const value = this.value;
+	const kilo = value * 1024;
+	const byte = kilo * 1024;
+	
+	document.querySelector('#kilobytes').textContent = kilo;
+	document.querySelector('#bytes').textContent = byte;
+});
+</script>
+
+</body>
+</html>
