@@ -13,6 +13,8 @@
 		code { font-family: Inconsolata, 'Courier New', monospace; color: #900; }
 		var { background: #fc08; color: #222; font-weight: bold; }
 		ul { list-style: square; margin: 0; padding-left: 1em; }
+		#timeouts { height: auto; max-height: 0; overflow: hidden; transition: max-height 0.6s ease-in; }
+		#timeouts.showing { max-height: 30em; }
 	</style>
 </head>
 <body>
@@ -29,12 +31,24 @@
 
 <ul>
 	<li>
-		Set <code title="Yeah, this is sort of an XPath to the setting...">/configuration/<wbr>system.web/<wbr>httpRuntime/<wbr>@maxRequestLength="<var id="kilobytes">512000</var>"</code>
+		Set <code title="Yeah, this is sort of an XPath to the setting...">/configuration/<wbr>system.web/<wbr>httpRuntime/<wbr>@maxRequestLength="<var id="kilobytes">51200</var>"</code>
 	</li>
 	<li>
-		Set <code>/configuration/<wbr>system.webServer/<wbr>security/<wbr>requestFiltering/<wbr>requestLimits/<wbr>@maxAllowedContentLength="<var id="bytes">524288000</var>"</code>
+		Set <code>/configuration/<wbr>system.webServer/<wbr>security/<wbr>requestFiltering/<wbr>requestLimits/<wbr>@maxAllowedContentLength="<var id="bytes">52428800</var>"</code>
 	</li>
 </ul>
+
+<div id="timeouts">
+	<p>
+		Also, you might need to set this one too, to prevent large uploads timing out:
+	</p>
+	<ul>
+		<li>
+			<code>/configuration/<wbr>system.web/<wbr>httpRuntime/<wbr>@executionTimeout="<var id="seconds">240</var>"</code>
+		</li>
+	</ul>
+	<p>(240 seconds = 4 minutes)</p>
+</div>
 
 </div>
 </main>
@@ -43,11 +57,15 @@
 const mega = document.querySelector('#megabytes')
 mega.addEventListener('keyup', function(event) {
 	const value = this.value;
+	if (value == '') return;
+	
 	const kilo = value * 1024;
 	const byte = kilo * 1024;
 	
 	document.querySelector('#kilobytes').textContent = kilo;
 	document.querySelector('#bytes').textContent = byte;
+	
+	document.querySelector('#timeouts').classList.add('showing');
 });
 </script>
 
