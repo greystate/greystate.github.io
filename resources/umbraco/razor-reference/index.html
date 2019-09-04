@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Umbraco Razor Quick Reference — v0.8.2</title>
+<title>Umbraco Razor Quick Reference — v0.8.4</title>
 <link rel="stylesheet" href="app.css">
 <link rel="stylesheet" href="https://use.typekit.net/vax3dgg.css">
 <script src="app.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -58,7 +58,7 @@ So you definitely shouldn't be editing it, or you'll end up sad...
 <div class="description"><p>
 				Returns the alias of the Document Type used by this content item.
 			</p></div>
-</div></section><section class="function" id="GetPropertyValue"><h2><a href="#GetPropertyValue">GetPropertyValue()</a></h2>
+</div></section><section class="function has-example" id="GetPropertyValue"><h2><a href="#GetPropertyValue">GetPropertyValue()</a></h2>
 <div class="details">
 <div class="usage">
 <div>
@@ -81,7 +81,13 @@ So you definitely shouldn't be editing it, or you'll end up sad...
 				Outputs the value of the specified property. If the <var>recursive</var> argument is <var>true</var>,
 				the value is taken from the first ancestor (or the node itself) that has a value for the property.
 			</p></div>
-</div></section><section class="function" id="GetPropertyValue&lt;T&gt;"><h2><a href="#GetPropertyValue&lt;T&gt;">GetPropertyValue&lt;T&gt;()</a></h2>
+<div class="example language-csharp">
+<h3>Example</h3>
+<pre><code>
+&lt;title&gt;@Model.GetPropertyValue("pageTitle", Model.Name)&lt;/title&gt;
+</code></pre>
+</div>
+</div></section><section class="function has-example" id="GetPropertyValue&lt;T&gt;"><h2><a href="#GetPropertyValue&lt;T&gt;">GetPropertyValue&lt;T&gt;()</a></h2>
 <div class="details">
 <div class="usage">
 <div>
@@ -100,6 +106,12 @@ So you definitely shouldn't be editing it, or you'll end up sad...
 <div class="description"><p>
 				Returns the value of the specified property as the type <strong>T</strong>.
 			</p></div>
+<div class="example language-csharp">
+<h3>Example</h3>
+<pre><code>
+var picker = Model.GetPropertyValue&lt;IEnumerable&lt;IPublishedContent&gt;&gt;("panels");
+</code></pre>
+</div>
 </div></section><section class="function" id="GetTemplateAlias"><h2><a href="#GetTemplateAlias">GetTemplateAlias()</a></h2>
 <div class="details">
 <div class="usage"><div>
@@ -160,7 +172,7 @@ So you definitely shouldn't be editing it, or you'll end up sad...
 <code>.UpdateDate</code> ⇒ <var>DateTime</var>
 </div>
 <div class="description"><p></p></div>
-</div></section><section class="property" id="Url"><h2><a href="#Url">Url</a></h2>
+</div></section><section class="property has-example" id="Url"><h2><a href="#Url">Url</a></h2>
 <div class="details">
 <div class="usage">
 <code>.Url</code> ⇒ <var>string</var>
@@ -181,7 +193,7 @@ So you definitely shouldn't be editing it, or you'll end up sad...
 				If the config setting <code>&lt;useDomainPrefixes&gt;</code> in umbracoSetting.config is <code>true</code>,
 				this will return a full URL with protocol, hostname &amp; port etc.
 			</p></div>
-</div></section><section class="property" id="UrlName"><h2><a href="#UrlName">UrlName</a></h2>
+</div></section><section class="property has-example" id="UrlName"><h2><a href="#UrlName">UrlName</a></h2>
 <div class="details">
 <div class="usage">
 <code>.UrlName</code> ⇒ <var>string</var>
@@ -274,7 +286,7 @@ So you definitely shouldn't be editing it, or you'll end up sad...
 <div class="note"><p>
 				Using this with no arguments is the same as using the <a class="ref" href="#ChildrenProperty">Children</a> property. Just included for consistency.
 			</p></div>
-</div></section><section class="function" id="Children&lt;T&gt;"><h2><a href="#Children&lt;T&gt;">Children&lt;T&gt;()</a></h2>
+</div></section><section class="function has-example" id="Children&lt;T&gt;"><h2><a href="#Children&lt;T&gt;">Children&lt;T&gt;()</a></h2>
 <div class="details">
 <div class="usage"><div>
 <code>.Children&lt;T&gt;()</code> ⇒ <var>collection</var>
@@ -308,6 +320,177 @@ var newsItems = Model.Children&lt;NewsItem&gt;();
 <div><code>.DescendantsOrSelf(string <var>nodeTypeAlias</var>)</code></div>
 </div>
 <div class="description"><p></p></div>
+</div></section>
+</div></section><section class="category"><header><h2>IsHelpers</h2>
+<div class="description"><p>
+			The <code>IsHelper</code> methods are a set of extension methods for <code>IPublishedContent</code>
+			to help perform quick conditional queries against <code>IPublishedContent</code>
+			nodes in a collection.
+			They can all return a simple <code>boolean</code>, or one of two supplied strings, depending
+			on the result of the comparison. Leaving the <code>valueIfFalse</code> argument out is equivalent to
+			supplying an empty string, which is what will be returned if the condition evaluates to <code>false</code>.
+		</p></div></header><div class="memberlist">
+<section class="function" id="IsAncestor"><h2><a href="#IsAncestor">IsAncestor()</a></h2>
+<div class="details">
+<div class="usage">
+<div>
+<code>.IsAncestor(node <var>otherNode</var>)</code> ⇒ <var>bool</var>
+</div>
+<div>
+<code>.IsAncestor(node <var>otherNode</var>, string <var>valueIfTrue</var>, [string <var>valueIfFalse</var>])</code> ⇒ <var>string</var>
+</div>
+</div>
+<div class="description"><p>Test if the current node in the iteration is an ancestor of another node</p></div>
+</div></section><section class="function" id="IsAncestorOrSelf"><h2><a href="#IsAncestorOrSelf">IsAncestorOrSelf()</a></h2>
+<div class="details">
+<div class="usage">
+<div>
+<code>.IsAncestorOrSelf(node <var>otherNode</var>)</code> ⇒ <var>bool</var>
+</div>
+<div>
+<code>.IsAncestorOrSelf(node <var>otherNode</var>, string <var>valueIfTrue</var>, [string <var>valueIfFalse</var>])</code> ⇒ <var>string</var>
+</div>
+</div>
+<div class="description"><p>Test if the current node in the iteration is the same as, or an ancestor of, another node</p></div>
+</div></section><section class="function" id="IsDescendant"><h2><a href="#IsDescendant">IsDescendant()</a></h2>
+<div class="details">
+<div class="usage">
+<div>
+<code>.IsDescendant(node <var>otherNode</var>)</code> ⇒ <var>bool</var>
+</div>
+<div>
+<code>.IsDescendant(node <var>otherNode</var>, string <var>valueIfTrue</var>, [string <var>valueIfFalse</var>])</code> ⇒ <var>string</var>
+</div>
+</div>
+<div class="description"><p>Test if the current node in the iteration is a descendant of another node</p></div>
+</div></section><section class="function" id="IsDescendantOrSelf"><h2><a href="#IsDescendantOrSelf">IsDescendantOrSelf()</a></h2>
+<div class="details">
+<div class="usage">
+<div>
+<code>.IsDescendantOrSelf(node <var>otherNode</var>)</code> ⇒ <var>bool</var>
+</div>
+<div>
+<code>.IsDescendantOrSelf(node <var>otherNode</var>, string <var>valueIfTrue</var>, [string <var>valueIfFalse</var>])</code> ⇒ <var>string</var>
+</div>
+</div>
+<div class="description"><p>Test if the current node in the iteration is the same as, or a descendant of, another node</p></div>
+</div></section><section class="function" id="IsEqual"><h2><a href="#IsEqual">IsEqual()</a></h2>
+<div class="details">
+<div class="usage">
+<div>
+<code>.IsEqual(node <var>otherNode</var>)</code> ⇒ <var>bool</var>
+</div>
+<div>
+<code>.IsEqual(node <var>otherNode</var>, string <var>valueIfTrue</var>, [string <var>valueIfFalse</var>])</code> ⇒ <var>string</var>
+</div>
+</div>
+<div class="description"><p>Test if the current node in the iteration is equal (by Id) to another node</p></div>
+</div></section><section class="function" id="IsEven"><h2><a href="#IsEven">IsEven()</a></h2>
+<div class="details">
+<div class="usage">
+<div>
+<code>.IsEven()</code> ⇒ <var>bool</var>
+</div>
+<div>
+<code>.IsEven(string <var>valueIfTrue</var>, [string <var>valueIfFalse</var>])</code> ⇒ <var>string</var>
+</div>
+</div>
+<div class="description"><p>Test if the current node's position is even</p></div>
+</div></section><section class="function" id="IsFirst"><h2><a href="#IsFirst">IsFirst()</a></h2>
+<div class="details">
+<div class="usage">
+<div>
+<code>.IsFirst()</code> ⇒ <var>bool</var>
+</div>
+<div>
+<code>.IsFirst(string <var>valueIfTrue</var>, [string <var>valueIfFalse</var>])</code> ⇒ <var>string</var>
+</div>
+</div>
+<div class="description"><p>Test if the current node is first in the collection.</p></div>
+</div></section><section class="function" id="IsLast"><h2><a href="#IsLast">IsLast()</a></h2>
+<div class="details">
+<div class="usage">
+<div>
+<code>.IsLast()</code> ⇒ <var>bool</var>
+</div>
+<div>
+<code>.IsLast(string <var>valueIfTrue</var>, [string <var>valueIfFalse</var>])</code> ⇒ <var>string</var>
+</div>
+</div>
+<div class="description"><p>Test if the current node is last in the collection</p></div>
+</div></section><section class="function" id="IsModZero"><h2><a href="#IsModZero">IsModZero()</a></h2>
+<div class="details">
+<div class="usage">
+<div>
+<code>.IsModZero(int <var>modulus</var>)</code> ⇒ <var>bool</var>
+</div>
+<div>
+<code>.IsModZero(int <var>modulus</var>, string <var>valueIfTrue</var>, [string <var>valueIfFalse</var>])</code> ⇒ <var>string</var>
+</div>
+</div>
+<div class="description"><p>Test if the current node's position is evenly divisible by a given number</p></div>
+</div></section><section class="function" id="IsNotFirst"><h2><a href="#IsNotFirst">IsNotFirst()</a></h2>
+<div class="details">
+<div class="usage">
+<div>
+<code>.IsNotFirst()</code> ⇒ <var>bool</var>
+</div>
+<div>
+<code>.IsNotFirst(string <var>valueIfTrue</var>, [string <var>valueIfFalse</var>])</code> ⇒ <var>string</var>
+</div>
+</div>
+<div class="description"><p>Test if the current node is not the first in the collection</p></div>
+</div></section><section class="function" id="IsNotLast"><h2><a href="#IsNotLast">IsNotLast()</a></h2>
+<div class="details">
+<div class="usage">
+<div>
+<code>.IsNotLast()</code> ⇒ <var>bool</var>
+</div>
+<div>
+<code>.IsNotLast(string <var>valueIfTrue</var>, [string <var>valueIfFalse</var>])</code> ⇒ <var>string</var>
+</div>
+</div>
+<div class="description"><p>Test if the current node is not the last item in the collection</p></div>
+</div></section><section class="function" id="IsNotModZero"><h2><a href="#IsNotModZero">IsNotModZero()</a></h2>
+<div class="details">
+<div class="usage">
+<div>
+<code>.IsNotModZero(int <var>modulus</var>)</code> ⇒ <var>bool</var>
+</div>
+<div>
+<code>.IsNotModZero(int <var>modulus</var>, string <var>valueIfTrue</var>, [string <var>valueIfFalse</var>])</code> ⇒ <var>string</var>
+</div>
+</div>
+<div class="description"><p>Test if the current node's position is not evenly divisible by a given number</p></div>
+</div></section><section class="function" id="IsNotPosition"><h2><a href="#IsNotPosition">IsNotPosition()</a></h2>
+<div class="details">
+<div class="usage">
+<div><code>.IsNotPosition(int <var>index</var>)</code></div>
+<div><code>.IsNotPosition(int <var>index</var>, string <var>valueIfTrue</var>, [string <var>valueIfFalse</var>])</code></div>
+</div>
+<div class="description"><p>Test if the current node is not at the specified <code>index</code> in the collection</p></div>
+</div></section><section class="function" id="IsOdd"><h2><a href="#IsOdd">IsOdd()</a></h2>
+<div class="details">
+<div class="usage">
+<div>
+<code>.IsOdd()</code> ⇒ <var>bool</var>
+</div>
+<div>
+<code>.IsOdd(string <var>valueIfTrue</var>, [string <var>valueIfFalse</var>])</code> ⇒ <var>string</var>
+</div>
+</div>
+<div class="description"><p>Test if the current node's position is odd</p></div>
+</div></section><section class="function" id="IsPosition"><h2><a href="#IsPosition">IsPosition()</a></h2>
+<div class="details">
+<div class="usage">
+<div>
+<code>.IsPosition(int <var>index</var>)</code> ⇒ <var>bool</var>
+</div>
+<div>
+<code>.IsPosition(int <var>index</var>, string <var>valueIfTrue</var>, [string <var>valueIfFalse</var>])</code> ⇒ <var>string</var>
+</div>
+</div>
+<div class="description"><p>Test if the current node is at the specified <code>index</code> in the collection</p></div>
 </div></section>
 </div></section><section class="category"><header><h2>Traversing</h2>
 <div class="description"><p>
@@ -483,7 +666,9 @@ var newsItems = Model.Children&lt;NewsItem&gt;();
 			</p></div>
 </div></section>
 </div></section><section class="category"><header><h2>Miscellaneous</h2></header><div class="memberlist">
-<section class="function" id="GetCulture"><h2><a href="#GetCulture">GetCulture()</a></h2>
+<section class="function has-example" id="GetCulture"><h2>
+<a href="#GetCulture">GetCulture()</a><data class="version-badge" value="7.2.7">v7.2.7+</data>
+</h2>
 <div class="details">
 <div class="usage"><div>
 <code>.GetCulture([uri <var>current</var>])</code> ⇒ <var>System.Globalization.CultureInfo</var>
@@ -533,8 +718,8 @@ var newsItems = Model.Children&lt;NewsItem&gt;();
 <code>.IsNull(string <var>propertyAlias</var>, bool <var>recursive</var>)</code> ⇒ <var>bool</var>
 </div>
 </div>
-<div class="description"><p>Returns a boolean value representing if the IPublishedContent property is Null.</p></div>
-</div></section><section class="function" id="IsVisible"><h2><a href="#IsVisible">IsVisible()</a></h2>
+<div class="description"><p>Returns a boolean value representing if the <code>IPublishedContent</code> property is Null.</p></div>
+</div></section><section class="function has-example" id="IsVisible"><h2><a href="#IsVisible">IsVisible()</a></h2>
 <div class="details">
 <div class="usage"><div>
 <code>.IsVisible()</code> ⇒ <var>bool</var>
@@ -544,12 +729,12 @@ var newsItems = Model.Children&lt;NewsItem&gt;();
 <div class="example language-csharp">
 <h3>Example</h3>
 <pre><code>
-@foreach (var item in Model.Children.Where(x =&gt; x.IsVisible()) {
+@foreach (var item in Model.Children.Where(x =&gt; x.IsVisible())) {
 	...
-})</code></pre>
+}</code></pre>
 </div>
 <div class="note"><p>This function requires a custom property with the alias <var>umbracoNaviHide</var> to work!</p></div>
-</div></section><section class="function" id="Site"><h2><a href="#Site">Site()</a></h2>
+</div></section><section class="function has-example" id="Site"><h2><a href="#Site">Site()</a></h2>
 <div class="details">
 <div class="usage"><div>
 <code>.Site()</code> ⇒ <var>node</var>
@@ -584,7 +769,9 @@ var siteRoot = Model.AncestorOrSelf(1);
 <code>.GroupBy(lambda <var>func</var>)</code> ⇒ <var>collection</var>
 </div></div>
 <div class="description"><p></p></div>
-</div></section><section class="function" id="InGroupsOf"><h2><a href="#InGroupsOf">InGroupsOf()</a></h2>
+</div></section><section class="function" id="InGroupsOf"><h2>
+<a href="#InGroupsOf">InGroupsOf()</a><data class="version-badge" value="7.2.1">v7.2.1+</data>
+</h2>
 <div class="details">
 <div class="usage"><div>
 <code>.InGroupsOf(int <var>number</var>)</code> ⇒ <var>collection</var>
@@ -602,7 +789,7 @@ var siteRoot = Model.AncestorOrSelf(1);
 <code>.OrderByDescending(lambda <var>func</var>)</code> ⇒ <var>collection</var>
 </div></div>
 <div class="description"><p></p></div>
-</div></section><section class="function" id="RandomOrder"><h2><a href="#RandomOrder">RandomOrder()</a></h2>
+</div></section><section class="function has-example" id="RandomOrder"><h2><a href="#RandomOrder">RandomOrder()</a></h2>
 <div class="details">
 <div class="usage"><div>
 <code>.RandomOrder()</code> ⇒ <var>collection</var>
@@ -642,14 +829,14 @@ var widgets = Model.Children&lt;Widget&gt;().RandomOrder().FirstOrDefault();
 <code>.TakeWhile(lambda <var>func</var>)</code> ⇒ <var>collection</var>
 </div></div>
 <div class="description"><p></p></div>
-</div></section><section class="function" id="Where"><h2><a href="#Where">Where()</a></h2>
+</div></section><section class="function has-example" id="Where"><h2><a href="#Where">Where()</a></h2>
 <div class="details">
 <div class="usage"><div>
 <code>.Where(lambda <var>func</var>)</code> ⇒ <var>collection</var>
 </div></div>
 <div class="description"><p>
 				Provides a way to filter a collection of nodes, by using a lambda function that
-				returns `true` if the node should be included and `false` if not.
+				returns <code>true</code> if the node should be included and <code>false</code> if not.
 			</p></div>
 <div class="example language-csharp">
 <h3>Example</h3>
@@ -722,7 +909,7 @@ var breaking = Model.Children&lt;NewsItem&gt;().Where(x =&gt; x.Category == "bre
 				Generates a hash based on the text string passed in.
 				This method will detect the security requirements (is FIPS enabled) and return an appropriate hash.
 			</p></div>
-</div></section><section class="function" id="GetDictionaryValue"><h2><a href="#GetDictionaryValue">GetDictionaryValue()</a></h2>
+</div></section><section class="function has-example" id="GetDictionaryValue"><h2><a href="#GetDictionaryValue">GetDictionaryValue()</a></h2>
 <div class="details">
 <div class="usage"><div>
 <code>@Umbraco.GetDictionaryValue(string <var>key</var>, [string <var>altText</var>])</code> ⇒ <var>string</var>
@@ -731,6 +918,12 @@ var breaking = Model.Children&lt;NewsItem&gt;().Where(x =&gt; x.Category == "bre
 				Returns the dictionary value for the specified key.
 				You can specify an <var>altText</var> fallback value to be returned if the dictionary has no value for <var>key</var>.
 			</p></div>
+<div class="example language-csharp">
+<h3>Example</h3>
+<pre><code>
+&lt;a href="#top"&gt;@Umbraco.GetDictionaryValue("TopLabel")&lt;/a&gt;
+</code></pre>
+</div>
 </div></section><section class="function" id="If"><h2><a href="#If">If()</a></h2>
 <div class="details">
 <div class="usage"><div>
