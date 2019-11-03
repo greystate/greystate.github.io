@@ -1,0 +1,154 @@
+/*
+   CSS Layout Visualizer Stylesheet
+   
+   Created by Chriztian Steinmeier on 2009-06-29.
+   Copyright 2009 ://steinmeier.dk. All rights reserved.
+*/
+
+
+html, body { height: 100%; margin: 0; padding: 0; }
+
+body {
+	width: 960px;
+	margin: 0 auto;
+	font: 75% "Lucida Grande", sans-serif;
+}
+
+ul[id*="nav"] {
+	list-style: none;
+	display: block;
+	padding: 0;
+}
+
+div, ul[id*="nav"] {
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	background-color: rgba(10%, 20%, 10%, 0.25);
+	margin: 6px;
+	min-height: 118px;
+	border: 1px dotted #333;
+	clear: both;
+}
+
+.right { float: right; }
+.left { float: left; }
+.center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.right, .left {
+	clear: none;
+}
+
+/*.w25 { width: 23%; }
+.w50 { width: 49%; }
+.w75 { width: 72%; }
+.w33 { width: 32%; }
+*/
+
+/* 1st level splits */
+.w25 { width: 222px; } /* (240-6-6-2)-6-2 +4 */
+.w50 { width: 458px; } /* (480-6-6-2)-6-2 */
+.w75 { width: 696px; } /* (720-6-6-2)-6-2 -2 */
+.w33 { width: 301px; } /* (320-6-6-2)-3-2 */
+
+/* 2nd level */
+.w75>.w25 { width: 159px; }
+.w75>.w33 { width: 218px; }
+.w75>.w75 { width: 509px; }
+.w75>.w50 { width: 334px; }
+
+.w50>.w50 { width: 214px; }
+.w50>.w25 { width: 99px; }
+.w50>.w75 { width: 329px; }
+
+.contain:after {
+	display: block;
+	clear: both;
+	height: 0;
+	content: ".";
+	visibility: hidden;
+}
+
+h1 {
+	font-size: 1.6em;
+	font-weight: bold;
+	text-align: center;
+	padding: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	background: #700;
+	color: #fff;
+}
+
+h2 {
+	font-size: 1em;
+	text-align: center;
+	padding: 2px;
+	color: rgba(10%, 20%, 30%, 0.8);
+	margin: 0;
+}
+
+.left>h2:before {
+	content: "\2190";
+	color: #900;
+	padding-right: 0.5em;
+	font-size: 150%;
+	vertical-align: middle;
+}
+
+.right>h2:after {
+	content: "\2192";
+	color: #900;
+	padding-left: 0.5em;
+	font-size: 150%;
+	vertical-align: middle;
+}
+
+.contain>h2:after {
+	content: "\21B5";
+	color: #900;
+	padding-left: 0.5em;
+	font-size: 150%;
+	vertical-align: middle;
+}
+
+
+/* Legend
++++++++++++++++++++++++++++++++++++++*/
+#legend {
+	border: 1px solid #000;
+	width: 150px;
+	background: #ddd;
+	position: fixed;
+	right: 20px;
+	top: 20px;
+	opacity: 0.75;
+	
+	-webkit-transition: opacity 1s ease-in;
+}
+
+#legend:hover {
+	opacity: 0.1;
+}
+
+#legend h3 {
+	margin: 6px auto;
+	text-align: center;
+	border-bottom: 1px solid #999;
+	padding-bottom: 6px;
+}
+
+#legend ul {
+	list-style: none;
+	margin: 12px;
+	padding: 0;
+}
+
+#legend li span {
+	font-weight: bold;
+	font-size: 150%;
+	vertical-align: middle;
+	color: #900;
+}

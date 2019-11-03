@@ -1,0 +1,181 @@
+/*
+   CSS Layout Visualizer Stylesheet
+   
+   Created by Chriztian Steinmeier on 2009-06-29.
+   Copyright 2009 ://steinmeier.dk. All rights reserved.
+
+   Liquid version, using percentages and box-sizing: border-box 
+
+*/
+@variables {
+	gutter: 3px;
+	borderWidth: 1px;
+	totalWidth: 90%;
+
+	fullWidth: 'unused';
+	
+	threeQuarterWidth: 73%;
+	halfWidth: 49%;
+	thirdWidth: 32%;
+	quarterWidth: 24.2%;
+	
+	_fullWidth: 956px;
+	_halfWidth: 476px;
+	_thirdWidth: 316px;
+	_quarterWidth: 236px;
+}
+
+
+
+html, body { height: 100%; margin: 0; padding: 0; }
+
+body {
+	margin: 0 auto;
+	font: 75% "Lucida Grande", sans-serif;
+}
+
+ul[id*="nav"] {
+	list-style: none;
+	display: block;
+	padding: 0;
+}
+
+div, ul[id*="nav"] {
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	background-color: rgba(10%, 20%, 10%, 0.25);
+	margin: 3px; /* var(gutter) */
+	min-height: 118px;
+	border: 1px dotted #333;
+	border-width: 1px; /* var(borderWidth) */
+	clear: both;
+	
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+.right { float: right; }
+.left { float: left; }
+.center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.right, .left {
+	clear: none;
+}
+
+.w25 { width: 24.2%; /* var(quarterWidth) */ }
+.w50 { width: 49%; /* var(halfWidth) */ }
+.w75 { width: 73%; /* var(threeQuarterWidth) */ }
+.w33 { width: 32%; /* var(thirdWidth) */ }
+.w66 { width: 63%; }
+
+.w50>.w25 { width: 23%; }
+.w50>.w50 { width: 48%; }
+.w50>.w75 { width: 72%; }
+.w50>.w33 { width: 31%; }
+.w50>.w66 { width: 62%; }
+
+
+
+div.initial {
+	box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	width: 90%; /* var(totalWidth) */
+}
+
+.contain:after {
+	display: block;
+	clear: both;
+	height: 0;
+	content: ".";
+	visibility: hidden;
+}
+
+h1 {
+	width: 90%; /* var(totalWidth) */
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 1.6em;
+	font-weight: bold;
+	text-align: center;
+	padding: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	background: #700;
+	color: #fff;
+}
+
+h2 {
+	font-size: 1em;
+	text-align: center;
+	padding: 2px;
+	color: rgba(10%, 20%, 30%, 0.8);
+	margin: 0;
+}
+
+.left>h2:before {
+	content: "\2190";
+	color: #900;
+	padding-right: 0.5em;
+	font-size: 150%;
+	vertical-align: middle;
+}
+
+.right>h2:after {
+	content: "\2192";
+	color: #900;
+	padding-left: 0.5em;
+	font-size: 150%;
+	vertical-align: middle;
+}
+
+.contain>h2:after {
+	content: "\21B5";
+	color: #900;
+	padding-left: 0.5em;
+	font-size: 150%;
+	vertical-align: middle;
+}
+
+
+/* Legend
++++++++++++++++++++++++++++++++++++++*/
+#legend {
+	border: 1px solid #000;
+	width: 150px;
+	background: #ddd;
+	position: fixed;
+	right: 20px;
+	top: 20px;
+	opacity: 0.75;
+	
+	-webkit-transition: opacity 1s ease-in;
+}
+
+#legend:hover {
+	opacity: 0.1;
+}
+
+#legend h3 {
+	margin: 6px auto;
+	text-align: center;
+	border-bottom: 1px solid #999;
+	padding-bottom: 6px;
+}
+
+#legend ul {
+	list-style: none;
+	margin: 12px;
+	padding: 0;
+}
+
+#legend li span {
+	font-weight: bold;
+	font-size: 150%;
+	vertical-align: middle;
+	color: #900;
+}
