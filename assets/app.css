@@ -8,10 +8,9 @@ b {
 }
 a {
   color: #dd4020;
-  text-decoration: none;
 }
 a:hover {
-  color: #ff8040!important;
+  color: #ff8040;
 }
 a.term {
   font-weight: bold;
@@ -132,5 +131,7 @@ img {
 @media (prefers-color-scheme: dark) {
 	body { background: #555; color: #999; }
 	img { mix-blend-mode: multiply; }
+	a { color: #ddd; }
+	a:hover { color: #edc; }
 }
 
