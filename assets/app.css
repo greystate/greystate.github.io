@@ -90,6 +90,7 @@ code {
   background-color: #dddddd;
   layer-background-color: #dddddd;
 }
+
 html,
 body {
   margin: 0;
@@ -124,3 +125,12 @@ img {
   margin: 0;
   max-width: 90%;
 }
+
+/* Color Schemes Support */
+:root { color-scheme: light dark; }
+
+@media (prefers-color-scheme: dark) {
+	body { background: #555; color: #999; }
+	img { mix-blend-mode: multiply; }
+}
+
