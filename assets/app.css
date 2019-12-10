@@ -89,7 +89,7 @@ code {
 html,
 body {
   margin: 0;
-  padding: 0;
+  padding: 0 10px;
   height: 100%;
 }
 body {
@@ -118,7 +118,11 @@ h1 {
 }
 img {
   margin: 0;
-  max-width: 90%;
+  max-width: 100%;
+}
+
+a[target="_blank"]::after {
+	content: " [↗︎]";
 }
 
 /* Color Schemes Support */
@@ -129,4 +133,5 @@ img {
   img { mix-blend-mode: multiply; }
   a { color: #ddd; }
   a:hover { color: #edc; }
+	ul { list-style: square; }
 }
