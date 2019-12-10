@@ -6,7 +6,7 @@ body {
   color: #333333;
 }
 b { font-weight: bold; }
-a { color: #dd4020; }
+a { color: #d53e1f; }
 a:hover { color: #ff8040; }
 a.term {
   font-weight: bold;
@@ -129,7 +129,7 @@ a[target="_blank"]::after {
 :root { color-scheme: light dark; }
 
 @media (prefers-color-scheme: dark) {
-  body { background: #555; color: #999; }
+  body { background: #555; color: #ccc; }
   img { mix-blend-mode: multiply; }
   a { color: #ddd; }
   a:hover { color: #edc; }
