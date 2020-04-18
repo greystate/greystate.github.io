@@ -63,9 +63,17 @@
 		"cB": 0,
 		"ft": 8192,
 		"hM": 0,
-		"oA": 2,
+		"oA": 1,
 		"oAP": "/greystate.dk_2020-04-18_23-47-50.report.html",
-		"oF": 0
+		"oF": 1
+		},
+	"/greystate.dk_2020-04-19_00-10-37.report.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 1,
+		"oAP": "/greystate.dk_2020-04-19_00-10-37.report.html",
+		"oF": 1
 		},
 	"/index.html": {
 		"cB": 0,
@@ -74,6 +82,14 @@
 		"oA": 2,
 		"oAP": "/index.html",
 		"oF": 0
+		},
+	"/manifest.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "/manifest-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
 		},
 	"/resources/css-variables/bundle/CSS_Variables.zip": {
 		"cB": 0,
