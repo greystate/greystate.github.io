@@ -59,6 +59,14 @@
 		"oAP": "/CNAME",
 		"oF": 0
 		},
+	"/favicon.ico": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 2,
+		"oAP": "/favicon.ico",
+		"oF": 0
+		},
 	"/greystate.dk_2020-04-18_23-47-50.report.html": {
 		"cB": 0,
 		"ft": 8192,
