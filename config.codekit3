@@ -40,7 +40,7 @@
 		"iS": 7696,
 		"oA": 0,
 		"oAP": "/assets/greylogo_opaque.gif",
-		"oF": 0,
+		"oF": 1,
 		"opt": 0
 		},
 	"/assets/right_arrow.gif": {
@@ -356,7 +356,7 @@
 	"allowInjectionReloads": 1,
 	"alwaysUseExternalServer": 0,
 	"animateCSSInjections": 1,
-	"autoBuildNewItems": 1,
+	"autoBuildNewItems": 0,
 	"autoprefixerEnableIEGrid": 0,
 	"babel7PresetType": 0,
 	"babelAllowRCFiles": 0,
