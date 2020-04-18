@@ -25,6 +25,17 @@
 		"oAP": "/404.html",
 		"oF": 0
 		},
+	"/apple-touch-icon.png": {
+		"ft": 32768,
+		"iS": 4538,
+		"oA": 0,
+		"oAP": "/apple-touch-icon.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
 	"/assets/app.css": {
 		"aP": 0,
 		"bl": 0,
@@ -82,6 +93,28 @@
 		"oA": 1,
 		"oAP": "/greystate.dk_2020-04-19_00-10-37.report.html",
 		"oF": 1
+		},
+	"/icon-192.png": {
+		"ft": 32768,
+		"iS": 4886,
+		"oA": 0,
+		"oAP": "/icon-192.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"/icon-512.png": {
+		"ft": 32768,
+		"iS": 19411,
+		"oA": 0,
+		"oAP": "/icon-512.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
 		},
 	"/index.html": {
 		"cB": 0,
@@ -372,7 +405,7 @@
 	"creationDate": 528925311,
 	"displayValue": "greystate.github.io",
 	"displayValueWasSetByUser": 0,
-	"iconImageName": "meme-archer",
+	"iconImageName": "/apple-touch-icon.png",
 	"iconImageWasSetByUser": 0
 	},
 "projectSettings": {
