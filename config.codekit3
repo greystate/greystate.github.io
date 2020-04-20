@@ -62,6 +62,25 @@
 		"oF": 0,
 		"opt": 0
 		},
+	"/buildnotes.md": {
+		"cB": 0,
+		"cS": 0,
+		"eF": 1,
+		"eL": 1,
+		"ema": 1,
+		"eSQ": 1,
+		"ft": 4096,
+		"hM": 0,
+		"oA": 1,
+		"oAP": "/buildnotes.html",
+		"oF": 0,
+		"oFM": 0,
+		"oS": 0,
+		"pHT": 0,
+		"pME": 1,
+		"rFN": 0,
+		"uCM": 0
+		},
 	"/CNAME": {
 		"cB": 0,
 		"ft": 8192,
@@ -211,6 +230,68 @@
 		"oAP": "/resources/layout/visualizer_liquid.css",
 		"oF": 0,
 		"oS": 0
+		},
+	"/resources/objredux/assets/app.css": {
+		"aP": 0,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 2,
+		"oAP": "/resources/objredux/assets/app.css",
+		"oF": 0,
+		"oS": 0
+		},
+	"/resources/objredux/assets/app.js": {
+		"bF": 4,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/assets/app.min.js",
+		"oF": 0,
+		"sC": 0,
+		"tS": 0
+		},
+	"/resources/objredux/assets/bg_grunge_wall.png": {
+		"ft": 32768,
+		"iS": 78789,
+		"oA": 0,
+		"oAP": "/resources/objredux/assets/bg_grunge_wall.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
+		},
+	"/resources/objredux/assets/libs.min.js": {
+		"bF": 4,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/assets/libs.min.min.js",
+		"oF": 0,
+		"sC": 0,
+		"tS": 0
+		},
+	"/resources/objredux/assets/templates.min.js": {
+		"bF": 4,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/assets/templates.min.min.js",
+		"oF": 0,
+		"sC": 0,
+		"tS": 0
+		},
+	"/resources/objredux/index.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 2,
+		"oAP": "/resources/objredux/index.html",
+		"oF": 0
 		},
 	"/resources/subtree-merge/css/app.css": {
 		"aP": 0,
