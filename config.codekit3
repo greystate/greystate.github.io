@@ -212,36 +212,17 @@
 		"oF": 0,
 		"oS": 0
 		},
-	"/resources/objredux/css/app.css": {
+	"/resources/objredux/assets/app.css": {
 		"aP": 0,
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
 		"oA": 2,
-		"oAP": "/resources/objredux/css/app.css",
+		"oAP": "/resources/objredux/assets/app.css",
 		"oF": 0,
 		"oS": 0
 		},
-	"/resources/objredux/images/bg_grunge_wall.png": {
-		"ft": 32768,
-		"iS": 152215,
-		"oA": 0,
-		"oAP": "/resources/objredux/images/bg_grunge_wall.png",
-		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
-		"oT": 1,
-		"q": 100
-		},
-	"/resources/objredux/index.html": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 2,
-		"oAP": "/resources/objredux/index.html",
-		"oF": 0
-		},
-	"/resources/objredux/scripts/app.js": {
+	"/resources/objredux/assets/app.js": {
 		"bF": 4,
 		"ft": 64,
 		"ma": 0,
@@ -252,15 +233,39 @@
 		"sC": 0,
 		"tS": 0
 		},
-	"/resources/objredux/scripts/app.js.map": {
-		"cB": 0,
-		"ft": 8192,
-		"hM": 0,
-		"oA": 2,
-		"oAP": "/resources/objredux/scripts/app.js.map",
-		"oF": 0
+	"/resources/objredux/assets/bg_grunge_wall.png": {
+		"ft": 32768,
+		"iS": 78789,
+		"oA": 0,
+		"oAP": "/resources/objredux/assets/bg_grunge_wall.png",
+		"oF": 0,
+		"oIPL": 0,
+		"opt": 0,
+		"oT": 1,
+		"q": 100
 		},
-	"/resources/objredux/scripts/libs.min.js": {
+	"/resources/objredux/assets/CSharp.js": {
+		"bF": 4,
+		"ft": 64,
+		"ma": 0,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "/assets/CSharp.min.js",
+		"oF": 0,
+		"sC": 0,
+		"tS": 0
+		},
+	"/resources/objredux/assets/helpers.css": {
+		"aP": 0,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 2,
+		"oAP": "/resources/objredux/assets/helpers.css",
+		"oF": 0,
+		"oS": 0
+		},
+	"/resources/objredux/assets/libs.min.js": {
 		"bF": 4,
 		"ft": 64,
 		"ma": 0,
@@ -271,7 +276,7 @@
 		"sC": 0,
 		"tS": 0
 		},
-	"/resources/objredux/scripts/templates.min.js": {
+	"/resources/objredux/assets/templates.min.js": {
 		"bF": 4,
 		"ft": 64,
 		"ma": 0,
@@ -281,6 +286,14 @@
 		"oF": 0,
 		"sC": 0,
 		"tS": 0
+		},
+	"/resources/objredux/index.html": {
+		"cB": 0,
+		"ft": 8192,
+		"hM": 0,
+		"oA": 2,
+		"oAP": "/resources/objredux/index.html",
+		"oF": 0
 		},
 	"/resources/subtree-merge/css/app.css": {
 		"aP": 0,

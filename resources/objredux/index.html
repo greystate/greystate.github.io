@@ -2,14 +2,19 @@
 <html lang="en">
 <head>
 
+
 <meta charset="utf-8">
 <title>Object Builder [redux]</title>
 
-<link rel="stylesheet" href="css/app.css?dev=0002">
+<base href="https://greystate.dk/resources/objredux/">
+
+<link rel="stylesheet" href="/assets/app.css?dev=0003">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <script type="text/javascript" src="//use.typekit.net/hyr0bms.js"></script>
 <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+
 </head>
 <body>
 
@@ -17,51 +22,57 @@
 	<h1>Object Builder [redux]</h1>
 
 	<form autocapitalize="none" autocorrect="off" autocomplete="off">
-	<fieldset class="design">
-		<legend>Design</legend>
-		<p class="textfield">
-			<label for="name">Object name</label>
-			<input type="text" name="name" id="name" placeholder="object name" autocomplete="off">
-		</p>
-		<p class="textfield">
-			<label for="property">Add property</label>
-			<input type="text" name="property" id="property" placeholder="property name" autocomplete="off">
-		</p>
-		<p class="textfield">
-			<label for="method">Add method</label>
-			<input type="text" name="method" id="method" placeholder="method name" autocomplete="off">
-		</p>
-
-		<fieldset id="codelang" class="language">
-			<legend>Language</legend>
-			<!-- Options are built here dynamically -->
+		<fieldset class="design">
+			<legend>Design</legend>
+			<p class="textfield">
+				<label for="name">Object name</label>
+				<input type="text" name="name" id="name" placeholder="object name" autocomplete="off">
+			</p>
+			<p class="textfield">
+				<label for="property">Add property</label>
+				<input type="text" name="property" id="property" placeholder="property name" autocomplete="off">
+			</p>
+			<p class="textfield">
+				<label for="method">Add method</label>
+				<input type="text" name="method" id="method" placeholder="method name" autocomplete="off">
+			</p>
+	
+			<fieldset id="codelang" class="language">
+				<legend>Language</legend>
+				<!-- Options are built here dynamically -->
+			</fieldset>
+			
+			<fieldset id="library-controls">
+				<legend>Library</legend>
+				<button type="button" id="save">Save to library &#x2192;</button>
+			</fieldset>
 		</fieldset>
-		
-		<fieldset id="library-controls">
-			<legend>Library</legend>
-			<button type="button" id="save">Save to library &#x2192;</button>
-		</fieldset>
-	</fieldset>
-
-	<div class="diagram">
-		<!-- Placeholder for Object Diagram -->
-	</div>
-	<div class="library">
-		<!-- Placeholder for saved objects -->
-	</div>
-</form>
+	
+		<div class="diagram">
+			<!-- Placeholder for Object Diagram -->
+		</div>
+		<div class="library">
+			<!-- Placeholder for saved objects -->
+		</div>
+	</form>
+	
 
 	<pre class="output"><code>
 
 	</code></pre>
 </section>
 
+
 <div class="footer">
 	Made by <a href="https://twitter.com/greystate/">Chriztian Steinmeier</a>,
 	source available <a href="https://github.com/greystate/object-builder">on GitHub</a>.
 </div>
-<script src="scripts/libs.min.js?dev=0002"></script>
-<script src="scripts/templates.min.js?dev=0002"></script>
-<script src="scripts/app.js?dev=0002"></script>
+
+
+<script src="/assets/libs.min.js?dev=0003"></script>
+<script src="/assets/templates.min.js?dev=0003"></script>
+<script src="/assets/app.js?dev=0003"></script>
+
+
 </body>
 </html>

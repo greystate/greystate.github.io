@@ -137,8 +137,7 @@ input[disabled] {
 }
 input[type="checkbox"],
 input[type="radio"] {
-  -moz-box-sizing: border-box;
-       box-sizing: border-box;
+  box-sizing: border-box;
   /* 1 */
   padding: 0;
   /* 2 */
@@ -146,7 +145,6 @@ input[type="radio"] {
 input[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
-  -moz-box-sizing: content-box;
   /* 2 */
   box-sizing: content-box;
 }
@@ -170,7 +168,8 @@ table {
   border-spacing: 0;
 }
 section.app {
-  margin: 0 auto;
+  margin-right: auto;
+  margin-left: auto;
 }
 @media only screen and (max-width: 668px) {
   section.app {
@@ -213,9 +212,6 @@ section.app {
 .design,
 .diagram,
 .library {
-  -moz-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  -o-box-sizing: border-box;
   box-sizing: border-box;
   margin: 0;
 }
@@ -288,7 +284,7 @@ section.app {
 }
 .footer {
   font-size: 12px;
-  font-size: 1.2rem;
+  font-size: 12/10 * 1rem;
   padding-top: 2em;
   text-align: center;
 }
@@ -303,15 +299,15 @@ body {
   font-family: "nimbus-sans-extended", sans-serif;
   font-weight: 400;
   font-size: 20px;
-  font-size: 2rem;
+  font-size: 20/10 * 1rem;
   color: #335;
-  background: #ececec url('../images/bg_grunge_wall.png') center top repeat;
+  background: #ececec url(bg_grunge_wall.png) center top repeat;
   background-size: 500px 375px;
 }
 @media only screen and (min-width: 669px) {
   body {
     font-size: 20px;
-    font-size: 2rem;
+    font-size: 20/10 * 1rem;
   }
   .debug body:before {
     content: "Regular ↔️";
@@ -331,7 +327,7 @@ body {
 @media only screen and (max-width: 668px) {
   body {
     font-size: 16px;
-    font-size: 1.6rem;
+    font-size: 16/10 * 1rem;
   }
   .debug body:before {
     content: "Compact ↔️";
@@ -356,7 +352,7 @@ h1 {
 @media only screen and (max-width: 668px) {
   h1 {
     font-size: 20px;
-    font-size: 2rem;
+    font-size: 20/10 * 1rem;
   }
   .debug h1:before {
     content: "Compact ↔️";
@@ -376,7 +372,7 @@ h1 {
 @media only screen and (min-width: 669px) {
   h1 {
     font-size: 40px;
-    font-size: 4rem;
+    font-size: 40/10 * 1rem;
   }
   .debug h1:before {
     content: "Regular ↔️";
@@ -443,12 +439,8 @@ table.object-model caption {
   font-family: "nimbus-sans-extended", sans-serif;
   font-weight: 900;
   border-radius: 8px;
-  -webkit-border-bottom-right-radius: 0;
-  -webkit-border-bottom-left-radius: 0;
-  -moz-border-bottom-right-radius: 0;
-  -moz-border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
   border: 2px solid #929292;
   background-color: rgba(0, 0, 0, 0.2);
   width: -webkit-fit-content;
@@ -464,19 +456,29 @@ table.object-model td {
 }
 table.object-model th {
   font-size: 0px;
-  font-size: 0rem;
+  font-size: 0/10 * 1rem;
   border-top: 2px solid #929292;
   overflow: hidden;
   padding: 2px 0;
 }
 .library table.object-model {
   font-size: 12px;
-  font-size: 1.2rem;
+  font-size: 12/10 * 1rem;
   border-width: 1px;
 }
 .library table.object-model caption,
 .library table.object-model th {
   border-width: 1px;
+}
+.library {
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+.library::before {
+  font-size: 14px;
+  font-size: 14/10 * 1rem;
+  content: "Library";
+  display: block;
+  padding: 0.5em 20px;
 }
 #library-controls {
   width: -webkit-fit-content;
@@ -487,6 +489,23 @@ table.object-model th {
 }
 #library-controls legend {
   display: none;
+}
+.diagram-saved .no-methods,
+.diagram-saved .no-properties {
+  display: none;
+}
+.diagram-saved .no-methods + tr,
+.diagram-saved .no-properties + tr {
+  display: none;
+}
+.diagram-saved button {
+  font-size: 12px;
+}
+.diagram-saved .object-model:hover {
+  cursor: pointer;
+  -webkit-filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.3));
+          filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.3));
+  background: #fff;
 }
 form {
   margin: 0 10px 10px 0;
@@ -502,8 +521,8 @@ form legend {
   font-weight: 700;
 }
 form fieldset.design {
-  border-radius: 6px;
   box-shadow: 0 4px 8px rgba(0, 0, 80, 0.3);
+  border-radius: 6px;
   background: rgba(255, 255, 255, 0.4);
 }
 form fieldset.design legend {
@@ -634,18 +653,17 @@ pre[class*="language-"] {
   -o-tab-size: 4;
   tab-size: 4;
   -webkit-hyphens: none;
-  -moz-hyphens: none;
   -ms-hyphens: none;
   hyphens: none;
 }
 /* Code blocks */
 pre[class*="language-"] {
   position: relative;
-  margin: .5em 0;
+  margin: 0.5em 0;
   box-shadow: -1px 0px 0px 0px #358ccb, 0px 0px 0px 1px #dfdfdf;
   border-left: 10px solid #358ccb;
   background-color: #fdfdfd;
-  background-image: -webkit-linear-gradient(transparent 50%, rgba(69, 142, 209, 0.04) 50%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(50%, transparent), color-stop(50%, rgba(69, 142, 209, 0.04)));
   background-image: linear-gradient(transparent 50%, rgba(69, 142, 209, 0.04) 50%);
   background-size: 3em 3em;
   background-origin: content-box;
@@ -668,14 +686,13 @@ code[class*="language"] {
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
   background-color: #fdfdfd;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
   margin-bottom: 1em;
 }
 /* Inline code */
 :not(pre) > code[class*="language-"] {
   position: relative;
-  padding: .2em;
+  padding: 0.2em;
   border-radius: 0.3em;
   color: #c92c2c;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -694,7 +711,6 @@ pre[class*="language-"]:after {
   height: 20%;
   box-shadow: 0px 13px 8px #979797;
   -webkit-transform: rotate(-2deg);
-  -ms-transform: rotate(-2deg);
   transform: rotate(-2deg);
 }
 :not(pre) > code[class*="language-"]:after,
@@ -702,7 +718,6 @@ pre[class*="language-"]:after {
   right: 0.75em;
   left: auto;
   -webkit-transform: rotate(2deg);
-  -ms-transform: rotate(2deg);
   transform: rotate(2deg);
 }
 .token.comment,
@@ -769,7 +784,7 @@ pre[class*="language-"]:after {
   cursor: help;
 }
 .namespace {
-  opacity: .7;
+  opacity: 0.7;
 }
 @media screen and (max-width: 767px) {
   pre[class*="language-"]:before,
@@ -811,7 +826,7 @@ pre .line-highlight {
   pre,
   code {
     font-size: 12px;
-    font-size: 1.2rem;
+    font-size: 12/10 * 1rem;
   }
   .debug pre:before,
   .debug code:before {
@@ -833,7 +848,7 @@ pre .line-highlight {
   pre,
   code {
     font-size: 16px;
-    font-size: 1.6rem;
+    font-size: 16/10 * 1rem;
   }
   .debug pre:before,
   .debug code:before {
@@ -853,8 +868,8 @@ pre .line-highlight {
 }
 pre[class*="language-"] {
   box-shadow: 0 0 6px rgba(0, 0, 20, 0.2) inset;
-  border-radius: 8px;
   border: 1px solid #ccc;
+  border-radius: 8px;
   padding-left: 1em;
   padding-right: 1em;
   width: auto;
