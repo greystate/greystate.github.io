@@ -663,7 +663,6 @@ pre[class*="language-"] {
   box-shadow: -1px 0px 0px 0px #358ccb, 0px 0px 0px 1px #dfdfdf;
   border-left: 10px solid #358ccb;
   background-color: #fdfdfd;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(50%, transparent), color-stop(50%, rgba(69, 142, 209, 0.04)));
   background-image: linear-gradient(transparent 50%, rgba(69, 142, 209, 0.04) 50%);
   background-size: 3em 3em;
   background-origin: content-box;
@@ -710,14 +709,12 @@ pre[class*="language-"]:after {
   width: 40%;
   height: 20%;
   box-shadow: 0px 13px 8px #979797;
-  -webkit-transform: rotate(-2deg);
   transform: rotate(-2deg);
 }
 :not(pre) > code[class*="language-"]:after,
 pre[class*="language-"]:after {
   right: 0.75em;
   left: auto;
-  -webkit-transform: rotate(2deg);
   transform: rotate(2deg);
 }
 .token.comment,
