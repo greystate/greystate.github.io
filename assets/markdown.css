@@ -1,0 +1,112 @@
+* {
+  font-size: large;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1.4;
+  margin: 0;
+}
+:root {
+  color-scheme: light dark;
+  --bgcolor: #ffd;
+  --fgcolor: #222;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bgcolor: #020;
+    --fgcolor: #ccc;
+  }
+}
+body {
+  background: #ffd;
+  color: #222;
+  background: var(--bgcolor, #ffd);
+  color: var(--fgcolor, #222);
+  padding: 2em;
+  font-family: "Courier Prime", "Courier New", Courier, monospace;
+  max-width: 75ch;
+}
+body * + * {
+  margin-top: 1.2em;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+}
+h1 {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  padding-bottom: 1em;
+}
+h1::after {
+  position: absolute;
+  content: "========================================================================";
+  display: block;
+  max-width: 100%;
+  white-space: pre;
+  overflow: hidden;
+}
+h2::before,
+h3::before,
+h4::before,
+h5::before,
+h6::before {
+  margin-right: 1ch;
+}
+h2::before {
+  content: "##";
+}
+h3::before {
+  content: "###";
+}
+h4::before {
+  content: "####";
+}
+h5::before {
+  content: "#####";
+}
+h6::before {
+  content: "######";
+}
+em {
+  font-style: italic;
+}
+em::before,
+em::after {
+  content: "*";
+}
+strong {
+  font-weight: bold;
+}
+strong::before,
+strong::after {
+  content: "**";
+}
+code::before,
+code::after {
+  content: "`";
+}
+a[href] {
+  color: inherit;
+}
+a[href]::before {
+  content: "[";
+}
+a[href]::after {
+  content: '](' attr(href) ')';
+}
+a[href][title]::after {
+  content: '](' attr(href) ' "' attr(title) '")';
+}
+a[href]:hover,
+a[href]:focus {
+  background: #aa1;
+}
+img {
+  background: linear-gradient(35deg, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.1));
+  box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.5);
+}

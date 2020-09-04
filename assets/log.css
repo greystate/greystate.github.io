@@ -1,0 +1,353 @@
+/*
+	This Stylesheet is a slightly modified version of Andy Bell's 
+	[A Modern CSS Reset](https://github.com/hankchizljaw/modern-css-reset)
+
+	Modifications include `height:auto` for `<img>` and some dark-mode defaults.
+*/
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/* Remove default padding */
+ul[class],
+ol[class] {
+  padding: 0;
+}
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+/* Remove list styles on ul, ol elements with a class attribute */
+ul[class],
+ol[class] {
+  list-style: none;
+}
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  -webkit-text-decoration-skip: ink;
+          text-decoration-skip-ink: auto;
+}
+/* Make images easier to work with */
+img {
+  max-width: 100%;
+  display: block;
+  height: auto;
+}
+/* Natural flow and rhythm in articles by default */
+article > * + * {
+  margin-top: 1em;
+}
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+/* Remove _all_ animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    -webkit-animation-play-state: paused !important;
+            animation-play-state: paused !important;
+    -webkit-transition: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* Set colors for links in dark mode */
+@media (prefers-color-scheme: dark) {
+  a:not([class]):link {
+    color: #28f;
+  }
+  a:not([class]):visited {
+    color: #84e;
+  }
+  a:not([class]):active {
+    color: #c33;
+  }
+}
+@supports (--property: "value") {
+  :root {
+    --bgcolor-light: #ddd;
+    --fgcolor-light: #444;
+    --code-color-light: #000;
+    --bgcolornav-light: rgba(0, 0, 200, 0.1);
+    --bgcolor-dark: #333;
+    --fgcolor-dark: #ccc;
+    --code-color-dark: #999;
+    --bgcolornav-dark: rgba(255, 255, 255, 0.1);
+    --bgcolor: var(--bgcolor-light);
+    --fgcolor: var(--fgcolor-light);
+    --codecolor: var(--code-color-light);
+    --bgnav: var(--bgcolornav-light);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bgcolor: var(--bgcolor-dark);
+    --fgcolor: var(--fgcolor-dark);
+    --codecolor: var(--codecolor-dark);
+    --bgnav: var(--bgcolornav-dark);
+  }
+  article h1 {
+    color: var(--fgcolor-dark);
+  }
+  pre:not([class]) {
+    color: var(--code-color-dark);
+  }
+}
+:root {
+  font-size: 120%;
+  color-scheme: light dark;
+}
+body {
+  font-size: 1em;
+  font-family: "Avenir Next", "Avenir", Helvetica, sans-serif;
+  padding-right: 1em;
+  padding-left: 1em;
+  background: #ddd;
+  background: var(--bgcolor);
+  color: #444;
+  color: var(--fgcolor);
+}
+a:not([class]) {
+  color: #a3c493;
+}
+h1 {
+  background-color: rgba(100, 0, 0, 0.3);
+  box-shadow: -100px 0 0 10px rgba(100, 0, 0, 0.3);
+  padding-right: 10px;
+  color: #000;
+  font-weight: 600;
+  font-size: 1.7rem;
+  border-right: 10px solid;
+}
+h1 + .date {
+  text-align: right;
+}
+h1 + *:not(.date) {
+  margin-top: 3.5em;
+}
+h2 {
+  font-size: 1.2rem;
+}
+h2 + * {
+  margin-top: 0;
+}
+@supports (display: grid) {
+  body {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+/* Set colors for links in light mode */
+@media (prefers-color-scheme: light) {
+  a:not([class]):link {
+    color: #c22;
+  }
+  a:not([class]):visited {
+    color: #c22;
+  }
+  a:not([class]):active {
+    color: #c22;
+  }
+}
+/* Set colors for links in dark mode */
+@media (prefers-color-scheme: dark) {
+  a:not([class]):link {
+    color: #f84;
+  }
+  a:not([class]):visited {
+    color: #f84;
+  }
+  a:not([class]):active {
+    color: #f84;
+  }
+}
+article {
+  margin: 2em auto 3rem;
+  max-width: 75ch;
+}
+article h2 {
+  border-bottom: 1px solid;
+  margin-bottom: 1em;
+  margin-top: 2em;
+}
+article h2::after {
+  content: "";
+  display: block;
+  height: 10px;
+  border-right: 10px solid;
+  margin-top: -5px;
+}
+article h2 a {
+  color: inherit !important;
+  text-decoration: none;
+}
+article h2 a:hover,
+article h2 a:focus {
+  color: #c22 !important;
+  text-decoration: underline;
+}
+article pre[class*=language-],
+article blockquote {
+  margin-top: 3em;
+  margin-bottom: 2em;
+}
+article pre[class*=language-],
+article pre[class*=language-] code[class*="language-"] {
+  font-size: 0.8rem;
+}
+article code:not([class]) {
+  background: #ccc;
+  color: #666;
+  box-shadow: 0 0 0 2px #ccc;
+  padding-right: 0.2em;
+  padding-left: 0.2em;
+}
+article figure {
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-bottom: 0;
+}
+article figure img {
+  width: 100%;
+}
+article figcaption {
+  max-width: 100%;
+  text-align: center;
+  font-size: 0.9rem;
+  padding: 0.1em 1em;
+  background: rgba(0, 0, 0, 0.3);
+}
+article blockquote {
+  margin-top: 2rem;
+  position: relative;
+  font-style: italic;
+  background: #000;
+  color: #fff;
+  padding: 1rem 1rem 1rem 3rem;
+  border-left: 6px solid #999;
+}
+article blockquote::before,
+article blockquote::after {
+  font-style: normal;
+  font-size: 3rem;
+  line-height: 1;
+  height: 1rem;
+  opacity: 0.5;
+  position: absolute;
+}
+article blockquote::before {
+  content: open-quote;
+  left: 1rem;
+  top: 0.1rem;
+}
+article blockquote::after {
+  content: close-quote;
+  right: 1.3rem;
+  bottom: 0.4rem;
+}
+article pre:not([class]) {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  overflow-x: auto;
+  color: #000;
+  color: var(--codecolor);
+}
+@supports (display: grid) {
+  article {
+    max-width: unset;
+    display: grid;
+    grid-template-columns: 3fr [wide-start] 1fr [code-start] 2fr [content-start] 1fr 2fr 3fr 2fr 1fr 3fr [content-end] 2fr [wide-end code-end] 3fr;
+  }
+  article > * {
+    grid-column: content;
+  }
+  article > p {
+    max-width: 75ch;
+  }
+  article > pre[class*=language-] {
+    grid-column: code;
+  }
+  article > blockquote {
+    grid-column: 4 / 9;
+  }
+  article > hr {
+    border: 1px dashed rgba(0, 0, 0, 0.3);
+    width: 25%;
+  }
+}
+.navbar {
+  min-height: 100vh;
+  min-width: 12em;
+  width: 23vw;
+  background: var(--bgnav);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+.navbar .links {
+  margin-top: 40vh;
+  margin-left: 1em;
+}
+.navbar .links a {
+  padding: 0.3em 0.8em;
+  display: inline-block;
+  background: #000;
+  color: #fff;
+}
+.navbar .links a[aria-current] {
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.5);
+}
+.navbar .links li + li > a {
+  margin-top: 0.2em;
+}
+.navbar .links li > ul {
+  margin-top: 0.2em;
+  margin-left: 0.5em;
+  max-height: 25em;
+  overflow: visible;
+}
+.navbar .links li > ul a {
+  background: #211;
+}
+.navbar .links a:not([aria-current]) + ul {
+  max-height: 0;
+  margin-top: 0;
+  overflow: hidden;
+}
+.navbar .links a:focus + ul {
+  margin-top: 0.2em;
+  margin-left: 0.5em;
+  max-height: 25em;
+  overflow: visible;
+}
+.navbar .links a + ul:focus-within {
+  margin-top: 0.2em;
+  margin-left: 0.5em;
+  max-height: 25em;
+  overflow: visible;
+}
