@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="/assets/greystate.css">
+<link rel="stylesheet" href="/assets/prism-light.css" media="(prefers-color-scheme: light)">
+<link rel="stylesheet" href="/assets/prism-dark.css" media="(prefers-color-scheme: dark)">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Where Visible??? — Greystate Blog</title>
+<script src="/assets/app.min.js" defer></script><script src="/assets/prism.min.js" defer></script>
+	
+</head>
+<body>
+<a class="skipper" href="#content">Skip to content</a><nav class="navbar"><ul class="links">
+<li><a href="/">Home</a></li>
+<li>
+<a href="/log/">Blog</a><ul class="archives">
+<li><a href="/log/2022/" tabindex="-1">2022</a></li>
+<li><a href="/log/2021/" tabindex="-1">2021</a></li>
+<li><a href="/log/2020/" tabindex="-1">2020</a></li>
+<li><a href="/log/2019/" tabindex="-1">2019</a></li>
+<li><a href="/log/2008/" tabindex="-1">2008</a></li>
+</ul>
+</li>
+<li><a href="/who/">About</a></li>
+<li>
+<a href="/resources/">Resources</a><ul class="res">
+<li><a href="https://greystate.dk/resources/objredux/" tabindex="-1" target="_blank">Object Builder</a></li>
+<li><a href="https://greystate.dk/resources/umbraco/razor-reference/" tabindex="-1" target="_blank">Razor QuickRef</a></li>
+</ul>
+</li>
+</ul></nav><article id="content">
+
+<h1 id="where-visible???">Where Visible???</h1>
+
+<abbr class="date" title="2017-09-28T07:53:00+0200"><a rel="bookmark" href="https://greystate.dk/log/2017/09/28/where-visible/"><time datetime="2017-09-28T07:53:00+0200">28 Sep, 2017</time></a></abbr>
+
+<p>Umbraco has (to my knowledge) always had a way to skip rendering certain documents in lists etc., by way of a property with the alias <code>umbracoNaviHide</code>. Not as part of the core code, mind you, but rather just a convention that’s been adhered to in the templates you choose from, when creating a new macro (or a partial view) in the Backoffice.</p>
+
+<p>Here’s how the Razor and XSLT templates use this convention:</p>
+
+<h3 id="xslt">XSLT</h3>
+
+<p>The XSLT version does this:</p>
+
+<pre><code class="lang-xml">&lt;xsl:for-each select="$currentPage/* [@isDoc and string(umbracoNaviHide) != '1']"&gt;
+	...
+&lt;/xsl:for-each&gt;
+</code></pre>
+
+<h3 id="razor">Razor</h3>
+
+<p>The Razor snippet puts the selection in a variable first, like this:</p>
+
+<pre><code class="lang-csharp">var selection = CurrentPage.Children.Where("Visible");
+</code></pre>
+
+<p>Ways in which I think the XSLT version better tells what’s going on:</p>
+
+<ol>
+<li><em>It uses the actual alias of the property that’s causing the exclusion, instead of a magic string.</em></li>
+</ol>
+
+<h2 id="rewrite">Rewrite</h2>
+
+<p>OK, turns out both of these can be improved - the XSLT can do without the string conversion and the Razor snippet apparently is using <em>dynamics</em> which is no-one’s favorite, these days. Or so I’m told :-)</p>
+
+<h3 id="xslt,-take-2">XSLT, take 2</h3>
+
+<pre><code class="lang-xml">&lt;xsl:for-each select="$currentPage/*[@isDoc][not(umbracoNaviHide = 1)]"&gt;
+	...
+&lt;/xsl:for-each&gt;
+</code></pre>
+
+<p>(If we were <em>really</em> doing XSLT and not just a version that’s friendlier to developers who hasn’t tried something like that, we’d just use apply-templates here and let the match templates do the rest :-)</p>
+
+<h3 id="razor,-take-2">Razor, take 2</h3>
+
+<pre><code class="lang-clike">var selection = Model.Content.Children.Where(x =&gt; x.IsVisible());
+</code></pre>
+
+<p>This is using what’s called “strongly typed” access and instead of a magic string we now have a magic method…</p>
+
+<p>As I said in a Slack channel recently, when asking about this:</p>
+
+<blockquote>
+<p>[The Razor snippets are] using “magic” if you don’t know anything about how you “hide” a page in Umbraco :-)</p>
+</blockquote>
+
+
+
+</article><footer><img class="logo" src="/images/greystate_logo.png" width="300" height="125" alt=""></footer>
+</body>
+</html>

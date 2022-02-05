@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="/assets/greystate.css">
+<link rel="stylesheet" href="/assets/prism-light.css" media="(prefers-color-scheme: light)">
+<link rel="stylesheet" href="/assets/prism-dark.css" media="(prefers-color-scheme: dark)">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>What a Glorious Mess — Greystate Blog</title>
+<script src="/assets/app.min.js" defer></script><script src="/assets/prism.min.js" defer></script>
+	
+</head>
+<body>
+<a class="skipper" href="#content">Skip to content</a><nav class="navbar"><ul class="links">
+<li><a href="/">Home</a></li>
+<li>
+<a href="/log/" aria-current="location">Blog</a><ul class="archives">
+<li><a href="/log/2022/" tabindex="-1">2022</a></li>
+<li><a href="/log/2021/" tabindex="-1">2021</a></li>
+<li><a href="/log/2020/" tabindex="-1">2020</a></li>
+<li><a href="/log/2019/" tabindex="-1" aria-current="location">2019</a></li>
+<li><a href="/log/2008/" tabindex="-1">2008</a></li>
+</ul>
+</li>
+<li><a href="/who/">About</a></li>
+<li>
+<a href="/resources/">Resources</a><ul class="res">
+<li><a href="https://greystate.dk/resources/objredux/" tabindex="-1" target="_blank">Object Builder</a></li>
+<li><a href="https://greystate.dk/resources/umbraco/razor-reference/" tabindex="-1" target="_blank">Razor QuickRef</a></li>
+</ul>
+</li>
+</ul></nav><article id="content">
+
+<h1 id="what-a-glorious-mess">What a Glorious Mess</h1>
+
+<abbr class="date" title="2019-10-04T21:42:00+0200"><a rel="bookmark" href="https://greystate.dk/log/2019/10/04/glorious-mess/"><time datetime="2019-10-04T21:42:00+0200">4 Oct, 2019</time></a></abbr>
+
+<p>I have a Point to make, and since I’ve been very fond of CoffeeScript for years,
+I’ll be using that to make it:</p>
+
+<pre><code class="lang-coffeescript">class Point
+	constructor: (@x = 0, @y = 0) -&gt;
+		
+	draw: () -&gt;
+		console.log "[#{@x}, #{@y}]"
+
+</code></pre>
+
+<p>In the good old days of CoffeeScript 1.x, this would compile to the following
+perfectly readable JS to serve in just about any browser:</p>
+
+<pre><code class="lang-javascript">var Point;
+
+Point = (function() {
+  function Point(x, y) {
+    this.x = x != null ? x : 0;
+    this.y = y != null ? y : 0;
+  }
+
+  Point.prototype.draw = function() {
+    return console.log("[" + this.x + ", " + this.y + "]");
+  };
+
+  return Point;
+
+})();
+</code></pre>
+
+<p>When I say “perfectly readable”, I mean just that - if someone wanted to take a peek at the
+source for something, the browser’s “View Source” menu was brilliant and the above would make
+sense to most developers familiar with JavaScript.</p>
+
+<h2 id="new-shiny">New Shiny</h2>
+
+<p>Then CoffeeScript 2.x came along, and because ES6 in the meantime had adopted
+quite a lot of the stuff we already knew from CoffeeScript, the compiled code
+looked much more like the CoffeeScript we’d written:</p>
+
+<pre><code class="lang-javascript">var Point;
+
+Point = class Point {
+	constructor(x = 0, y = 0) {
+	  this.x = x;
+	  this.y = y;
+	}
+
+	draw() {
+	  return console.log(`[${this.x}, ${this.y}]`);
+	}
+};
+</code></pre>
+
+<p>But there’s of course a catch here… the compiled code (ES6) no longer runs in
+just about every browser, so we need to use another post-processor called Babel
+to generate something that can be served to just about any browser…
+only, it creates a horrible mess that no one would ever want to read when inspecting the source:</p>
+
+<pre><code class="lang-javascript">"use strict";
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i &lt; props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+(function () {
+  var Point;
+
+  Point =
+  /*#__PURE__*/
+  function () {
+    function Point() {
+      var x = arguments.length &gt; 0 &amp;&amp; arguments[0] !== undefined ? arguments[0] : 0;
+      var y = arguments.length &gt; 1 &amp;&amp; arguments[1] !== undefined ? arguments[1] : 0;
+
+      _classCallCheck(this, Point);
+
+      this.x = x;
+      this.y = y;
+    }
+
+    _createClass(Point, [{
+      key: "draw",
+      value: function draw() {
+        return console.log("[".concat(this.x, ", ").concat(this.y, "]"));
+      }
+    }]);
+
+    return Point;
+  }();
+}).call(void 0);
+</code></pre>
+
+<p>How on earth is <em>anyone</em> going to learn from reading that? Let alone spark that
+curious “Aah, I see - so <em>that’s</em> how you do that…” that fuels so many hours of
+poking around other people’s source code, that got myself to where I am today?</p>
+
+
+
+</article><footer><img class="logo" src="/images/greystate_logo.png" width="300" height="125" alt=""></footer>
+</body>
+</html>

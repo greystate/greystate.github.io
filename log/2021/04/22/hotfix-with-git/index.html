@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="/assets/greystate.css">
+<link rel="stylesheet" href="/assets/prism-light.css" media="(prefers-color-scheme: light)">
+<link rel="stylesheet" href="/assets/prism-dark.css" media="(prefers-color-scheme: dark)">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Hotfixing on Umbraco Cloud with Git — Greystate Blog</title>
+<script src="/assets/app.min.js" defer></script><script src="/assets/prism.min.js" defer></script>
+	
+</head>
+<body>
+<a class="skipper" href="#content">Skip to content</a><nav class="navbar"><ul class="links">
+<li><a href="/">Home</a></li>
+<li>
+<a href="/log/" aria-current="location">Blog</a><ul class="archives">
+<li><a href="/log/2022/" tabindex="-1">2022</a></li>
+<li><a href="/log/2021/" tabindex="-1" aria-current="location">2021</a></li>
+<li><a href="/log/2020/" tabindex="-1">2020</a></li>
+<li><a href="/log/2019/" tabindex="-1">2019</a></li>
+<li><a href="/log/2008/" tabindex="-1">2008</a></li>
+</ul>
+</li>
+<li><a href="/who/">About</a></li>
+<li>
+<a href="/resources/">Resources</a><ul class="res">
+<li><a href="https://greystate.dk/resources/objredux/" tabindex="-1" target="_blank">Object Builder</a></li>
+<li><a href="https://greystate.dk/resources/umbraco/razor-reference/" tabindex="-1" target="_blank">Razor QuickRef</a></li>
+</ul>
+</li>
+</ul></nav><article id="content">
+
+<h1 id="hotfixing-on-umbraco-cloud-with-git">Hotfixing on Umbraco Cloud with Git</h1>
+
+<abbr class="date" title="2021-04-22T18:59:00+0200"><a rel="bookmark" href="https://greystate.dk/log/2021/04/22/hotfix-with-git/"><time datetime="2021-04-22T18:59:00+0200">22 Apr, 2021</time></a></abbr>
+
+<p>Today I needed to fix something on the production site though
+the development site wasn’t in a deployable state. What to do?</p>
+
+<p>TL;DR: <a href="#recap">Go to the recap</a> with the essential steps.</p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<p>I’m pretty much using a standard setup when working with <a href="https://umbraco.com/cloud/" target="_blank">Umbraco Cloud</a> these days:</p>
+
+<p>I setup both a <strong>Development</strong> and a <strong>Live</strong> environment and when I clone the site,
+I specifically name the <em>origin</em> <code>DEV</code> instead of the default <code>origin</code>:</p>
+
+<pre><code class="lang-bash">git clone --origin DEV &lt;URL&gt; "&lt;ProjectName&gt;.Web"
+</code></pre>
+
+<p>I also add a second remote pointing to the Live environment:</p>
+
+<pre><code class="lang-bash">git remote add LIVE &lt;URL&gt;
+</code></pre>
+
+<p>This way I can see the environment’s name in the GitHub Desktop client and
+I (ideally) won’t accidentally push to the live environment 😱.</p>
+
+<figure><picture><source srcset="/images/github-dev-remote-dark.png" media="(prefers-color-scheme: dark)"></source><img src="/images/github-dev-remote.png" alt="GitHub Desktop Client showing the remote's name as 'DEV'"></picture><figcaption>The GitHub Desktop Client shows the remote's name on the 'Pull' button</figcaption></figure>
+
+<h2 id="hotfixing">Hotfixing</h2>
+
+<p>So, back to my problem…</p>
+
+<p>The <a href="https://our.umbraco.com/documentation/Umbraco-Cloud/Deployment/Hotfixes/Using-Git/" target="_blank">Umbraco Documentation</a> actually has some (very) detailed information about this,
+and a couple of examples of how to go about it. If you’re using <a href="https://www.gitkraken.com" target="_blank">GitKraken</a> or a similar
+client, you may just have a look at those first. I happen to use the GitHub Desktop client and
+a fair share of command line git, so I went about my own way to solve this.</p>
+
+<h3 id="separate-commit(s)">Separate commit(s)</h3>
+
+<p>First off, I fixed the actual problem <strong>on the local clone</strong> (DEV) to make sure I wouldn’t
+accidentally remove it again, whenever the in-development version eventually gets deployed to
+LIVE. I also make sure to make separate commits that can later be <a href="https://git-scm.com/docs/git-cherry-pick" target="_blank">cherry-picked</a> for
+inclusion on the LIVE site.</p>
+
+<p>Using either GitHub Desktop or the command line, I grab the hash of the commit(s) I’ve just
+created.</p>
+
+<h3 id="transfer-to-the-live-remote">Transfer to the LIVE remote</h3>
+
+<p>Next up, I’ll fetch the latest changes from Umbraco Cloud and create a new <code>hotfix</code> branch
+from LIVE’s <code>master</code>:</p>
+
+<pre><code class="lang-bash">git fetch LIVE
+git checkout LIVE/master # &lt;&lt; You'll be notified about a detached HEAD - don't panic :)
+git checkout -b hotfix
+</code></pre>
+
+<p>All set to add the changes to the <code>hotfix</code> branch now:</p>
+
+<pre><code class="lang-bash">git cherry-pick &lt;HASH&gt;
+</code></pre>
+
+<p>Now comes the scary part – we want to push the <code>hotfix</code> branch directly into the LIVE remote’s
+<code>master</code> branch (!)</p>
+
+<pre><code class="lang-bash">git push LIVE hotfix:master
+</code></pre>
+
+<p>And there we have it; a hotfix deployed to the LIVE site and we can continue work on DEV until
+we’re ready, and not worry about forgetting to get that hotfix in as well.</p>
+
+<h2 id="recap">Recap</h2>
+
+<p>So, in short:</p>
+
+<ul>
+<li>Make sure to have a LIVE remote</li>
+<li>Fix the bug locally and commit to DEV</li>
+<li>Fetch the LIVE remote</li>
+<li>Checkout LIVE/master</li>
+<li>Create <code>hotfix</code> branch</li>
+<li>Cherry pick the commit(s)</li>
+<li>Push to <code>LIVE hotfix:master</code>
+</li>
+</ul>
+
+</article><footer><img class="logo" src="/images/greystate_logo.png" width="300" height="125" alt=""></footer>
+</body>
+</html>

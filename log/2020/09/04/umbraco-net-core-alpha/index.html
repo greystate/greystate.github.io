@@ -1,78 +1,162 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="/assets/greystate.css">
 <link rel="stylesheet" href="/assets/prism-light.css" media="(prefers-color-scheme: light)">
 <link rel="stylesheet" href="/assets/prism-dark.css" media="(prefers-color-scheme: dark)">
-<link rel="stylesheet" href="/assets/log.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Trying Out the .NET Core Umbraco Alpha Release — Greystate Blog</title>
-	<meta charset="utf-8">
+<script src="/assets/app.min.js" defer></script><script src="/assets/prism.min.js" defer></script>
+	
 </head>
 <body>
-<article>
+<a class="skipper" href="#content">Skip to content</a><nav class="navbar"><ul class="links">
+<li><a href="/">Home</a></li>
+<li>
+<a href="/log/" aria-current="location">Blog</a><ul class="archives">
+<li><a href="/log/2022/" tabindex="-1">2022</a></li>
+<li><a href="/log/2021/" tabindex="-1">2021</a></li>
+<li><a href="/log/2020/" tabindex="-1" aria-current="location">2020</a></li>
+<li><a href="/log/2019/" tabindex="-1">2019</a></li>
+<li><a href="/log/2008/" tabindex="-1">2008</a></li>
+</ul>
+</li>
+<li><a href="/who/">About</a></li>
+<li>
+<a href="/resources/">Resources</a><ul class="res">
+<li><a href="https://greystate.dk/resources/objredux/" tabindex="-1" target="_blank">Object Builder</a></li>
+<li><a href="https://greystate.dk/resources/umbraco/razor-reference/" tabindex="-1" target="_blank">Razor QuickRef</a></li>
+</ul>
+</li>
+</ul></nav><article id="content">
 
-<h1 id="trying-out-the-net-core-umbraco-alpha-release">Trying Out the .NET Core Umbraco Alpha Release</h1>
+<h1 id="trying-out-the-.net-core-umbraco-alpha-release">Trying Out the .NET Core Umbraco Alpha Release</h1>
 
-<abbr class="date" title=""><a rel="bookmark" href="https://greystate.dk/log/2020/09/04//"><time datetime="2020-09-04T22:11:11+0200">4 Sep, 2020</time></a></abbr>
+<abbr class="date" title="2020-09-04T22:11:11+0200"><a rel="bookmark" href="https://greystate.dk/log/2020/09/04/umbraco-net-core-alpha/"><time datetime="2020-09-04T22:11:11+0200">4 Sep, 2020</time></a></abbr>
 
-<p>Many times since I started using Umbraco (~11 years ago), I’ve been in situations where it’d have been nice (read: not so risky) to be able to run a local development version of an Umbraco website. But it’s never been possible on a Mac, unless you were using a VM or something similar. So I’ve had a Windows laptop on hand for these occasions.</p>
+<p>Many times since I started using Umbraco (some 11 years ago), I’ve been in
+situations where it’d have been nice (read: not so risky) to be able to run a
+local development version of an Umbraco website. But it’s never been possible on
+a Mac, unless you were using a VM or something similar. So I’ve had a Windows
+laptop on hand for these occasions.</p>
 
-<p>So when I learned that now there was an alpha version available that people had apparently been able to run natively on macOS I was all “where do I sign my name and get a copy of it?”</p>
+<p>So when I learned that now there was an alpha version available that people had
+apparently been able to run natively on macOS I was all “where do I sign my name
+and get a copy of it?”</p>
 
 <h2 id="hands-on">Hands on</h2>
 
-<p>Getting my hands on the actual alpha release was not difficult - <a href="https://umbraco.com/blog/net-core-alpha-release/" target="_blank">this blogpost on umbraco.com</a> gave me the initial pointers. I didn’t do the CLI stuff since I already had Visual Studio for Mac installed and figured I’d try using that.</p>
+<p>Getting my hands on the actual alpha release was not difficult -
+<a href="https://umbraco.com/blog/net-core-alpha-release/" target="_blank">this blogpost on umbraco.com</a>
+gave me the initial pointers. I didn’t do the CLI stuff since I already had
+Visual Studio for Mac installed and figured I’d try using that.</p>
 
 <p>The actual steps I followed were these:</p>
 
 <ol>
-<li>Download and <a href="https://dotnet.microsoft.com/download" target="_blank">install the .NET Core 3.1 installer</a> from Microsoft’s site</li>
-<li>Add the custom NuGet feed as described (running <code>dotnet nuget add source "https://www.myget.org/F/umbracoprereleases/api/v3/index.json" -n "Umbraco Prereleases"</code> in Terminal)</li>
-<li>Install the Umbraco dotnet template (running <code>dotnet new -i Umbraco.Templates::0.5.0-alpha001</code> in Terminal)</li>
-<li>Created a new empty solution (again, running the listed Terminal command: <code>dotnet new umbraco -n UmbraMaco</code> - yes, I chose a better name than <em>MyCustomUmbracoSolution</em> :-))</li>
+<li><p>Download and <a href="https://dotnet.microsoft.com/download" target="_blank">install the .NET Core 3.1 installer</a>
+from Microsoft’s site</p></li>
+<li>
+<p>Add the custom NuGet feed as described</p>
+
+<pre><code class="lang-bash">dotnet nuget add source "https://www.myget.org/F/umbracoprereleases/api/v3/index.json" -n "Umbraco Prereleases"
+</code></pre>
+</li>
+<li>
+<p>Install the Umbraco dotnet template</p>
+
+<pre><code class="lang-bash">dotnet new -i Umbraco.Templates::0.5.0-alpha001
+</code></pre>
+</li>
+<li>
+<p>Created a new empty solution</p>
+
+<pre><code class="lang-bash">dotnet new umbraco -n UmbraMaco
+</code></pre>
+
+<p>(yes, I chose a better name than <em>MyCustomUmbracoSolution</em> :-))</p>
+</li>
 </ol>
 
-<p>At this point, the blogpost boldly states that I can <em>“open the newly created project in [my] favourite IDE”</em> - while Visual Studio isn’t exactly “my favourite”, it’s probably the only IDE I have that’ll open a .NET project, so I went ahead and did just that.</p>
+<p>At this point, the blogpost boldly states that I can
+<em>“open the newly created project in [my] favourite IDE”</em> - while Visual Studio
+isn’t exactly “my favourite”, it’s probably the only IDE I have that’ll open a
+.NET project, so I went ahead and did just that.</p>
 
 <h2 id="roadblock(s)-ahead">Roadblock(s) ahead</h2>
 
-<p>As soon as I opened the project, I could tell from the red messages that something wasn’t all well. I managed to quite quickly (and I’m very proud of this, as I have no idea how stuff works in Visual Studio) figure out that even though I’d added the custom NuGet feed on the command-line, that Visual Studio wanted its own instruction about this. So I found out where to specify NuGet feeds and added it in. Then I hit reload (or what ever it says on the button that makes the project refresh its packages etc.)</p>
+<p>As soon as I opened the project, I could tell from the red messages that
+something wasn’t all well. I managed to quite quickly (and I’m very proud of
+this, as I have no idea how stuff works in Visual Studio) figure out that even
+though I’d added the custom NuGet feed on the command-line, that Visual Studio
+wanted its own instruction about this. So I found out where to specify NuGet
+feeds and added it in. Then I hit reload (or what ever it says on the button
+that makes the project refresh its packages etc.)</p>
 
-<p>Lo and behold, there was a total lack of red messages and I challenged myself to press the Play button…</p>
+<p>Lo and behold, there was a total lack of red messages and I challenged myself
+to press the Play button…</p>
 
-<p>I was treated with a pile of messages flying by, and eventually the familiar install screen opening in a web browser, and I typed my name and my email address and came up with “a very good password” (TM) and slammed my head into the next roadblock…</p>
+<p>I was treated with a pile of messages flying by, and eventually the familiar
+install screen opening in a web browser, and I typed my name and my email
+address and came up with “a very good password” (TM) and slammed my head into
+the next roadblock…</p>
 
 <h2 id="it’s-a-database.-we-base-all-our-data-on-it.">It’s a database. We base all our data on it.</h2>
 
-<p>I’ve installed Umbraco hundreds of times so I don’t know why I was suddenly confused about the next screen, where I was tasked with the (seemingly) simple job of choosing whether to use <strong>Microsoft SQL</strong> or <em>something Azure’y</em>, or maybe I had a custom Connection String I’d like to use for the database to use for this Umbraco site?</p>
+<p>I’ve installed Umbraco hundreds of times so I don’t know why I was suddenly
+confused about the next screen, where I was tasked with the (seemingly) simple
+job of choosing whether to use <strong>Microsoft SQL</strong> or <em>something Azure’y</em>, or
+maybe I had a custom Connection String I’d like to use for the database to use
+for this Umbraco site?</p>
 
-<p>I think I’d been counting on SQL-CE being available, but as I’d have know, had I read the rest of the blogpost, SQL-CE is a Windows-only requirement, so isn’t installed by default.</p>
+<p>I think I’d been counting on SQL-CE being available, but as I’d have know, had I
+read the rest of the blogpost, SQL-CE is a Windows-only requirement, so isn’t
+installed by default.</p>
 
-<p>I did some DuckDuckGo-ing (aka Google-ing, <em>ed.</em>) and saw the words <strong>Docker</strong> and <strong>Container</strong> and my mind went blank…</p>
+<p>I did some DuckDuckGo-ing (aka Google-ing, <em>ed.</em>) and saw the words <strong>Docker</strong>
+and <strong>Container</strong> and my mind went blank…</p>
 
-<p>I closed the browser and shut down Visual Studio and went for a walk with the dog.</p>
+<p>I closed the browser and shut down Visual Studio and went for a walk with the
+dog.</p>
 
 <h2 id="when-in-doubt,-read-tweets">When in doubt, read tweets</h2>
 
-<p>Returning from the walk, I saw <a href="https://twitter.com/pjengaard/status/1301617397900759040" target="_blank" rel="noopener">a tweet from René Pjengaard</a> and I replied that I was stuck. Of course, the friendly neighbourhood Spider-Men of Umbraco friends immediately rose to the rescue by confirming my earlier findings - to try using Docker and get an instance of MSSQL running in there. So I got back in the saddle and whipped open “the download program” (web browser, <em>ed.</em>).</p>
+<p>Returning from the walk, I saw
+<a href="https://twitter.com/pjengaard/status/1301617397900759040" target="_blank">a tweet from René Pjengaard</a>
+and I replied that I was stuck. Of course, the friendly neighbourhood Spider-Men
+of Umbraco friends immediately rose to the rescue by confirming my earlier
+findings - to try using Docker and get an instance of MSSQL running in there.
+So I got back in the saddle and whipped open “the download program”
+(web browser, <em>ed.</em>).</p>
 
 <h2 id="how-did-i-get-it-to-work?">How did I get it to work?</h2>
 
-<p>From <a href="https://database.guide/how-to-install-sql-server-on-a-mac/" target="_blank">a post</a> that’s a couple of years old, I got the basics of how to use Docker and install MSSQL.</p>
+<p>From <a href="https://database.guide/how-to-install-sql-server-on-a-mac/" target="_blank">a post</a> that’s
+a couple of years old, I got the basics of how to use Docker and install MSSQL.</p>
 
-<p>I also managed to launch the Docker image and then I had another “<strong>Finding Nemo</strong> After the End Credits Sequence” - “Now What?” moment (<a href="https://twitter.com/greystate/status/1301634901696020480" rel="noopener" target="_blank">twitter.com/greystate/status/1301634901696020480</a>)</p>
+<p>I also managed to launch the Docker image and then I had another
+“<strong>Finding Nemo</strong> After the End Credits Sequence” - “Now What?” moment
+(https://twitter.com/greystate/status/1301634901696020480)</p>
 
-<p>But then I thought, “What the heck” - the thing is running (it says) so maybe I can try with <strong>SQLPro</strong>? (It’s one of <a href="http://www.macsqlclient.com" target="_blank">a suite of native Mac apps</a> for working with databases that I got from the Mac App Store). I’ve used the app for connecting to Umbraco Cloud databases on and off, so it just might work?</p>
+<p>But then I thought, “What the heck” - the thing is running (it says) so maybe I
+can try with <strong>SQLPro</strong>? (It’s one of
+<a href="http://www.macsqlclient.com" target="_blank">a suite of native Mac apps</a> for working with
+databases that I got from the Mac App Store). I’ve used the app for connecting
+to Umbraco Cloud databases on and off, so it just might work?</p>
 
-<p>I tried connecting to it by specifying <code>localhost</code> as the server and providing the credentials and it worked! (Yes, I’m an experienced developer and I google stuff and I was utterly surprised to <em>actually</em> see this work).</p>
+<p>I tried connecting to it by specifying <code>localhost</code> as the server and providing
+the credentials and it worked! (Yes, I’m an experienced developer and I google
+stuff and I was utterly surprised to <em>actually</em> see this work).</p>
 
-<p>All that was left was to create a database and then restart the Umbraco site from Visual Studio.</p>
+<p>All that was left was to create a database and then restart the Umbraco site
+from Visual Studio.</p>
 
-<p>And then I got all the way to the familiar Umbraco Backoffice, but running locally on my Mac. Surreal for real.</p>
+<p>And then I got all the way to the familiar Umbraco Backoffice, but running
+locally on my Mac. Surreal for real.</p>
 
-</article>
 
-<script src="/assets/prism.min.js"></script>
+
+</article><footer><img class="logo" src="/images/greystate_logo.png" width="300" height="125" alt=""></footer>
 </body>
 </html>
