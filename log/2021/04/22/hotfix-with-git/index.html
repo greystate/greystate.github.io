@@ -42,7 +42,7 @@ the development site wasn’t in a deployable state. What to do?</p>
 
 <h2 id="prerequisites">Prerequisites</h2>
 
-<p>I’m pretty much using a standard setup when working with <a href="https://umbraco.com/cloud/" target="_blank">Umbraco Cloud</a> these days:</p>
+<p>I’m pretty much using a standard setup when working with <a href="https://umbraco.com/cloud/" target="_blank" rel="noopener noreferrer">Umbraco Cloud</a> these days:</p>
 
 <p>I setup both a <strong>Development</strong> and a <strong>Live</strong> environment and when I clone the site,
 I specifically name the <em>origin</em> <code>DEV</code> instead of the default <code>origin</code>:</p>
@@ -64,8 +64,8 @@ I (ideally) won’t accidentally push to the live environment 😱.</p>
 
 <p>So, back to my problem…</p>
 
-<p>The <a href="https://our.umbraco.com/documentation/Umbraco-Cloud/Deployment/Hotfixes/Using-Git/" target="_blank">Umbraco Documentation</a> actually has some (very) detailed information about this,
-and a couple of examples of how to go about it. If you’re using <a href="https://www.gitkraken.com" target="_blank">GitKraken</a> or a similar
+<p>The <a href="https://our.umbraco.com/documentation/Umbraco-Cloud/Deployment/Hotfixes/Using-Git/" target="_blank" rel="noopener noreferrer">Umbraco Documentation</a> actually has some (very) detailed information about this,
+and a couple of examples of how to go about it. If you’re using <a href="https://www.gitkraken.com" target="_blank" rel="noopener noreferrer">GitKraken</a> or a similar
 client, you may just have a look at those first. I happen to use the GitHub Desktop client and
 a fair share of command line git, so I went about my own way to solve this.</p>
 
@@ -73,7 +73,7 @@ a fair share of command line git, so I went about my own way to solve this.</p>
 
 <p>First off, I fixed the actual problem <strong>on the local clone</strong> (DEV) to make sure I wouldn’t
 accidentally remove it again, whenever the in-development version eventually gets deployed to
-LIVE. I also make sure to make separate commits that can later be <a href="https://git-scm.com/docs/git-cherry-pick" target="_blank">cherry-picked</a> for
+LIVE. I also make sure to make separate commits that can later be <a href="https://git-scm.com/docs/git-cherry-pick" target="_blank" rel="noopener noreferrer">cherry-picked</a> for
 inclusion on the LIVE site.</p>
 
 <p>Using either GitHub Desktop or the command line, I grab the hash of the commit(s) I’ve just
@@ -118,6 +118,6 @@ we’re ready, and not worry about forgetting to get that hotfix in as well.</p>
 </li>
 </ul>
 
-</article><footer><img class="logo" src="/images/greystate_logo.png" width="300" height="125" alt=""></footer>
+</article><footer><img class="logo" src="/images/greystate_logo.png" width="300" height="125" alt="Greystate"></footer>
 </body>
 </html>
