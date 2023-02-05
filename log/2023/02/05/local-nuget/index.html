@@ -14,7 +14,8 @@
 <a class="skipper" href="#content">Skip to content</a><nav class="navbar"><ul class="links">
 <li><a href="/">Home</a></li>
 <li>
-<a href="/log/">Blog</a><ul class="archives">
+<a href="/log/" aria-current="location">Blog</a><ul class="archives">
+<li><a href="/log/2023/" tabindex="-1" aria-current="location">2023</a></li>
 <li><a href="/log/2022/" tabindex="-1">2022</a></li>
 <li><a href="/log/2021/" tabindex="-1">2021</a></li>
 <li><a href="/log/2020/" tabindex="-1">2020</a></li>
@@ -35,7 +36,7 @@
 
 <abbr class="date" title="2023-02-05T09:06:24"><a rel="bookmark" href="https://greystate.dk/log/2023/02/05/local-nuget/"><time datetime="2023-02-05T09:06:24">5 Feb, 2023</time></a></abbr>
 
-<p>Recently I’ve been upgrading a few of my packages for use with Umbraco 10, and have thus had
+<p>Recently I’ve been upgrading a few of <a href="https://marketplace.umbraco.com/search/vokseverk" target="_blank" rel="noopener noreferrer">my packages</a> for use with Umbraco 10, and have thus had
 to learn how to build a NuGet package, since — well - that’s a requirement now if I want to be
 able to install the thing.</p>
 
@@ -81,40 +82,42 @@ looking for the package … ¯\_(ツ)_/¯.</p>
 a package to a project.</p>
 
 <p>Then you do a lot more digging and trying out things before you realise that you don’t need to
-set up your own private NuGet server, but you can “just” add your package to the “locals” source
-and install it from there.</p>
+set up your own private NuGet server, <del>but you can “just” add your package to the “locals” source
+and install it from there.</del> <ins>in fact, you can add your package using the <code>--source</code>
+parameter pointing to your <code>.nupkg</code> file. Thanks for the tip <a href="https://cultiv.social/@sebastiaan/109811220485601783" target="_blank" rel="noopener noreferrer">Sebastiaan</a>!</ins></p>
 
 <h2 id="the-steps">The Steps</h2>
 
 <p>When you’ve built your <code>.nupkg</code> package, start a command prompt in your test site’s project
-folder:</p>
+folder and add the package using the path to your local <code>.nupkg</code> file:</p>
 
-<ol>
-<li>
-<p>Add the package to the “locals” source with</p>
+<pre><code class="lang-bash">dotnet add package Package.Name --source ../path-to-file/Package.Name.1.2.3.nupkg
+</code></pre>
+
+<p>That’s it!</p>
+
+<hr>
+
+<p>Alternatively, you can use a “locals” source, in which case there’s an extra step for adding
+the package to the “locals” source first:</p>
 
 <pre><code class="lang-bash">nuget add ../path-to-package/Package.Name.1.2.3.nupkg -Source locals
 </code></pre>
-</li>
-<li>
-<p>Install the package into the project using the “locals” source:</p>
+
+<p>Then you add it to your project, this way:</p>
 
 <pre><code class="lang-bash">dotnet add package Package.Name --source locals
 </code></pre>
-</li>
-<li>
-<p>Run the project:</p>
+
+<hr>
+
+<p>Whichever process you choose, the last step is to run the project:</p>
 
 <pre><code class="lang-bash">dotnet run
 </code></pre>
-</li>
-</ol>
 
-<p>(That’s not a typo, btw; the <code>nuget</code> command’s parameter is named <code>-Source</code> while the <code>dotnet</code>
-command has a <code>--source</code> parameter.)</p>
-
-<p>Oh, and remember to increase the package version everytime, because even though it looks like it
-grabs your <code>.nupkg</code> file from a <code>locals</code> folder inside your project, there’s definitely some
+<p>Oh, and remember to increase the package version every time, because even though it looks like it
+grabs your <code>.nupkg</code> file from a folder inside your project, there’s definitely some
 caching going on that will trip you up. Trust me :)</p>
 
 </article><footer><img class="logo" src="/images/greystate_logo.png" width="300" height="125" alt="Greystate"></footer>
