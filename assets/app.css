@@ -363,6 +363,13 @@ article .note {
   padding: 1em;
   font-size: smaller;
 }
+article del {
+  opacity: 0.5;
+}
+article ins {
+  text-decoration: none;
+  background: rgba(154, 205, 50, 0.2);
+}
 article pre:not([class]) {
   background: rgba(0, 0, 0, 0.5);
   padding: 1rem;
