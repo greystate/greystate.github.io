@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="/assets/greystate.css">
+<link rel="stylesheet" href="/assets/prism-light.css" media="(prefers-color-scheme: light)">
+<link rel="stylesheet" href="/assets/prism-dark.css" media="(prefers-color-scheme: dark)">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Testing a NuGet Package Locally — Greystate Blog</title>
+<script src="/assets/app.min.js" defer></script><script src="/assets/prism.min.js" defer></script>
+	
+</head>
+<body>
+<a class="skipper" href="#content">Skip to content</a><nav class="navbar"><ul class="links">
+<li><a href="/">Home</a></li>
+<li>
+<a href="/log/">Blog</a><ul class="archives">
+<li><a href="/log/2022/" tabindex="-1">2022</a></li>
+<li><a href="/log/2021/" tabindex="-1">2021</a></li>
+<li><a href="/log/2020/" tabindex="-1">2020</a></li>
+<li><a href="/log/2019/" tabindex="-1">2019</a></li>
+<li><a href="/log/2008/" tabindex="-1">2008</a></li>
+</ul>
+</li>
+<li><a href="/who/">About</a></li>
+<li>
+<a href="/resources/">Resources</a><ul class="res">
+<li><a href="https://greystate.dk/resources/objredux/" tabindex="-1" target="_blank">Object Builder</a></li>
+<li><a href="https://greystate.dk/resources/umbraco/razor-reference/" tabindex="-1" target="_blank">Razor QuickRef</a></li>
+</ul>
+</li>
+</ul></nav><article id="content">
+
+<h1 id="testing-a-nuget-package-locally">Testing a NuGet Package Locally</h1>
+
+<abbr class="date" title="2023-02-05T09:06:24"><a rel="bookmark" href="https://greystate.dk/log/2023/02/05/local-nuget/"><time datetime="2023-02-05T09:06:24">5 Feb, 2023</time></a></abbr>
+
+<p>Recently I’ve been upgrading a few of my packages for use with Umbraco 10, and have thus had
+to learn how to build a NuGet package, since — well - that’s a requirement now if I want to be
+able to install the thing.</p>
+
+<p>While the packages themselves were pretty straightforward upgrades (i.e. no changes required -
+they “just worked”), the process wasn’t a smooth one - so let’s have a look at why that was.</p>
+
+<p>As always, <a href="#the-steps">here’s a TL;DR link</a> for your next visit (our mine, probably!).</p>
+
+<h2 id="types-of-testing">Types of Testing</h2>
+
+<h3 id="developing">Developing</h3>
+
+<p>So first off, I should explain what kind of testing I’m talking about here, because there are a
+couple of different scenarios. While you’re <em>developing</em> a package (or in my case, converting an
+existing one) we want to use it in Umbraco and we want our changes to be reflected right away,
+so we can iterate and make everything work.</p>
+
+<p>Umbraco has a special dotnet CLI invocation for this, creating an Umbraco solution specifically
+referencing (in the <code>.csproj</code> file) your package’s files instead of its NuGet reference. This
+way, you’re only a <code>dotnet run</code> command away from testing any changes to your package.</p>
+
+<p>You do this by adding the <code>--PackageTestSiteName</code> (or <code>-p</code> for short) parameter when creating a
+new Umbraco project:</p>
+
+<pre><code class="lang-bash">dotnet new umbraco -n &lt;ProjectName&gt; -p &lt;PackageProjectName&gt;
+</code></pre>
+
+<h3 id="installing">Installing</h3>
+
+<p>Now, the <em>other kind</em> of testing is to make sure that your package actually installs correctly,
+because the above does not make any such guarantees. If you’re like me and you don’t know what
+you’re doing (!) you could easily waste an hour or more trying to figure out why your package
+doesn’t work for <em>anyone else but yourself!.</em></p>
+
+<p>This happens because the <code>PackageName.targets</code> file format is <em>a little difficult</em> to understand
+when your package needs to install files other than a built DLL (that’s <em>all</em> my packages).</p>
+
+<p>So you don’t want to publish a package to NuGet before you know it works (you can’t delete a
+faulty package from NuGet) - but the <code>dotnet add package</code> command <em>immediately</em> goes to nuget.org
+looking for the package … ¯\_(ツ)_/¯.</p>
+
+<p>That is, until you do a little digging and find out that you can specify a “source” when adding
+a package to a project.</p>
+
+<p>Then you do a lot more digging and trying out things before you realise that you don’t need to
+set up your own private NuGet server, but you can “just” add your package to the “locals” source
+and install it from there.</p>
+
+<h2 id="the-steps">The Steps</h2>
+
+<p>When you’ve built your <code>.nupkg</code> package, start a command prompt in your test site’s project
+folder:</p>
+
+<ol>
+<li>
+<p>Add the package to the “locals” source with</p>
+
+<pre><code class="lang-bash">nuget add ../path-to-package/Package.Name.1.2.3.nupkg -Source locals
+</code></pre>
+</li>
+<li>
+<p>Install the package into the project using the “locals” source:</p>
+
+<pre><code class="lang-bash">dotnet add package Package.Name --source locals
+</code></pre>
+</li>
+<li>
+<p>Run the project:</p>
+
+<pre><code class="lang-bash">dotnet run
+</code></pre>
+</li>
+</ol>
+
+<p>(That’s not a typo, btw; the <code>nuget</code> command’s parameter is named <code>-Source</code> while the <code>dotnet</code>
+command has a <code>--source</code> parameter.)</p>
+
+<p>Oh, and remember to increase the package version everytime, because even though it looks like it
+grabs your <code>.nupkg</code> file from a <code>locals</code> folder inside your project, there’s definitely some
+caching going on that will trip you up. Trust me :)</p>
+
+</article><footer><img class="logo" src="/images/greystate_logo.png" width="300" height="125" alt="Greystate"></footer>
+</body>
+</html>
