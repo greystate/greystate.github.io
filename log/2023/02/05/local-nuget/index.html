@@ -84,14 +84,14 @@ a package to a project.</p>
 <p>Then you do a lot more digging and trying out things before you realise that you don’t need to
 set up your own private NuGet server, <del>but you can “just” add your package to the “locals” source
 and install it from there.</del> <ins>in fact, you can add your package using the <code>--source</code>
-parameter pointing to your <code>.nupkg</code> file. Thanks for the tip <a href="https://cultiv.social/@sebastiaan/109811220485601783" target="_blank" rel="noopener noreferrer">Sebastiaan</a>!</ins></p>
+parameter pointing to the directory of your <code>.nupkg</code> file. Thanks for the tip <a href="https://cultiv.social/@sebastiaan/109811220485601783" target="_blank" rel="noopener noreferrer">Sebastiaan</a>!</ins></p>
 
 <h2 id="the-steps">The Steps</h2>
 
 <p>When you’ve built your <code>.nupkg</code> package, start a command prompt in your test site’s project
-folder and add the package using the path to your local <code>.nupkg</code> file:</p>
+folder and add the package using the path to the directory that holds your local <code>.nupkg</code> file:</p>
 
-<pre><code class="lang-bash">dotnet add package Package.Name --source ../path-to-file/Package.Name.1.2.3.nupkg
+<pre><code class="lang-bash">dotnet add package Package.Name --source ../path/to/nupkg-files
 </code></pre>
 
 <p>That’s it!</p>
