@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="/assets/greystate.css">
+<link rel="stylesheet" href="/assets/prism-light.css" media="(prefers-color-scheme: light)">
+<link rel="stylesheet" href="/assets/prism-dark.css" media="(prefers-color-scheme: dark)">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>A Razor ‘@helper’ block for .NET Core — Greystate Blog</title>
+<script src="/assets/app.min.js" defer></script><script src="/assets/prism.min.js" defer></script>
+	
+</head>
+<body>
+<a class="skipper" href="#content">Skip to content</a><nav class="navbar"><ul class="links">
+<li><a href="/">Home</a></li>
+<li>
+<a href="/log/" aria-current="location">Blog</a><ul class="archives">
+<li><a href="/log/2023/" tabindex="-1" aria-current="location">2023</a></li>
+<li><a href="/log/2022/" tabindex="-1">2022</a></li>
+<li><a href="/log/2021/" tabindex="-1">2021</a></li>
+<li><a href="/log/2020/" tabindex="-1">2020</a></li>
+<li><a href="/log/2019/" tabindex="-1">2019</a></li>
+<li><a href="/log/2008/" tabindex="-1">2008</a></li>
+</ul>
+</li>
+<li><a href="/who/">About</a></li>
+<li>
+<a href="/resources/">Resources</a><ul class="res">
+<li><a href="https://greystate.dk/resources/objredux/" tabindex="-1" target="_blank">Object Builder</a></li>
+<li><a href="https://greystate.dk/resources/umbraco/razor-reference/" tabindex="-1" target="_blank">Razor QuickRef</a></li>
+</ul>
+</li>
+</ul></nav><article id="content">
+
+<h1 id="a-razor-‘@helper’-block-for-.net-core">A Razor ‘@helper’ block for .NET Core</h1>
+
+<abbr class="date" title="2023-11-18T01:01:24"><a rel="bookmark" href="https://greystate.dk/log/2023/11/18/razor-helper/"><time datetime="2023-11-18T01:01:24">18 Nov, 2023</time></a></abbr>
+
+<p>Joe Glombek <a href="https://umbracocommunity.social/@joe/111426429003754029" target="_blank" rel="noopener noreferrer">asked me</a> to elaborate on <a href="https://mastodon.social/@greystate/111426018693788843" target="_blank" rel="noopener noreferrer">this toot</a>:</p>
+
+<blockquote>
+<p>W000T!!</p>
+
+<p>TIL: The “holy-cow-I-used-that-a-lot” <code>@​helper</code> feature in Razor that was removed
+[at some point], does in fact still exist, albeit a whole lot more anonymously (which of
+course means that I would never find out about it on my own).</p>
+
+<p>#Umbraco</p>
+</blockquote>
+
+<p>What I was referring to was this Razor feature that I’ve been using a lot:</p>
+
+<pre><code class="lang-razor">&lt;section&gt;
+	@sayHello("Joe")
+	@sayHello("Chriztian")
+&lt;/section&gt;
+
+@helper sayHello(string name) {
+	var greeting = name == "Joe" ? "Hello!" : "Hi there!";
+	&lt;article&gt;
+		&lt;h2&gt;@(name)&lt;/h2&gt;
+		&lt;cite&gt;Hello!&lt;/cite&gt;
+	&lt;/article&gt;
+}
+</code></pre>
+
+<p>The idea being that you could create what’s essentially a function, but instead of returning a
+value, it renders markup directly from within; i.e. no <code>HtmlString</code>-futzing necessary to build
+a return value.</p>
+
+<p>But this was no longer possible in .NET Core, and I’ve been back to creating real functions,
+returning <code>HTMLString</code>s, when I saw something very similar in a C# View Partial:</p>
+
+<pre><code class="lang-razor">@{
+	void QuoteMe(string message, string source) {
+		&lt;q cite="@(source)"&gt;@(message)&lt;/q&gt;
+	}
+}
+</code></pre>
+
+<p>Apparently that’s been possible since .NET Core 3/4-ish?</p>
+
+</article><footer><img class="logo" src="/images/greystate_logo.png" width="300" height="125" alt="Greystate"></footer>
+</body>
+</html>

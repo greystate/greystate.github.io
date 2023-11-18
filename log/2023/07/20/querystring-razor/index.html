@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="/assets/greystate.css">
+<link rel="stylesheet" href="/assets/prism-light.css" media="(prefers-color-scheme: light)">
+<link rel="stylesheet" href="/assets/prism-dark.css" media="(prefers-color-scheme: dark)">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>How To Get a QueryString Value in Razor — Greystate Blog</title>
+<script src="/assets/app.min.js" defer></script><script src="/assets/prism.min.js" defer></script>
+	
+</head>
+<body>
+<a class="skipper" href="#content">Skip to content</a><nav class="navbar"><ul class="links">
+<li><a href="/">Home</a></li>
+<li>
+<a href="/log/" aria-current="location">Blog</a><ul class="archives">
+<li><a href="/log/2023/" tabindex="-1" aria-current="location">2023</a></li>
+<li><a href="/log/2022/" tabindex="-1">2022</a></li>
+<li><a href="/log/2021/" tabindex="-1">2021</a></li>
+<li><a href="/log/2020/" tabindex="-1">2020</a></li>
+<li><a href="/log/2019/" tabindex="-1">2019</a></li>
+<li><a href="/log/2008/" tabindex="-1">2008</a></li>
+</ul>
+</li>
+<li><a href="/who/">About</a></li>
+<li>
+<a href="/resources/">Resources</a><ul class="res">
+<li><a href="https://greystate.dk/resources/objredux/" tabindex="-1" target="_blank">Object Builder</a></li>
+<li><a href="https://greystate.dk/resources/umbraco/razor-reference/" tabindex="-1" target="_blank">Razor QuickRef</a></li>
+</ul>
+</li>
+</ul></nav><article id="content">
+
+<h1 id="how-to-get-a-querystring-value-in-razor">How To Get a QueryString Value in Razor</h1>
+
+<abbr class="date" title="2023-07-20T08:09:47"><a rel="bookmark" href="https://greystate.dk/log/2023/07/20/querystring-razor/"><time datetime="2023-07-20T08:09:47">20 Jul, 2023</time></a></abbr>
+
+<p>A frequent pattern for me when dealing with articles or calendar events in Umbraco,
+is to initially render a selection (e.g. the latest 10 articles), and then provide some kind
+of filtering method to be able to access more (or a less) of these, subsequently.</p>
+
+<p>I always use a QueryString parameter for this, e.g.:</p>
+
+<p><code>https://example.com/articles/</code> will get me the initial list</p>
+
+<p><code>https://example.com/articles/?tag=xslt</code> will get me only the articles tagged with <code>xslt</code></p>
+
+<p>In “old” Umbraco (ASP.NET, I think?) this was accomplished using the <code>Request.QueryString</code>
+object - it was even “forwarded” to XSLT macros by way of <code>umbraco.library.RequestQueryString</code>,
+so really a no-brainer (meaning someone like me could figure it out 😀) to “just” make your
+view aware of some sort of config parameter.</p>
+
+<p>When Umbraco switched from ASP.NET to .NET Core (or whatever it’s called these days) this got
+exponentially harder, at least for <em>me,</em> because of this thing called <em>dependency injection</em>
+(though I <em>will</em> admit that it’s <em>fairly</em> straight-forward to work with in a Razor view, as opposed
+to a helper class where somehow I’m still unable to do the correct incantations).</p>
+
+<p>If I need to get the “tag” parameter from the QueryString - here’s how I do it currently:</p>
+
+<pre><code class="lang-csharp">// Inject the HttpContextAccessor
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor;
+@{
+	// Get a context
+	var httpContext = HttpContextAccessor.HttpContext;
+
+	// Grab the value(s) you need
+	var tag = httpContext.Request.Query["tag"].ToString();
+}
+
+</code></pre>
+
+<p>I can’t tell you how much I dislike that <code>.ToString()</code> there - but if you want to do practically
+anything else than just render the value, you have to cast it because the actual value is not
+a <code>string</code>… ¯\<em>(ツ)</em>/¯</p>
+
+</article><footer><img class="logo" src="/images/greystate_logo.png" width="300" height="125" alt="Greystate"></footer>
+</body>
+</html>
