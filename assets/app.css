@@ -34,6 +34,7 @@
 }
 @media (prefers-color-scheme: dark) {
   :root {
+    --link-color: var(--link-color-dark);
     --bgcolor: var(--bgcolor-dark);
     --fgcolor: var(--fgcolor-dark);
     --codecolor: var(--codecolor-dark);
@@ -122,8 +123,7 @@ select {
 /* Remove _all_ animations and transitions for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
   * {
-    -webkit-animation-play-state: paused !important;
-            animation-play-state: paused !important;
+    animation-play-state: paused !important;
     transition: none !important;
     scroll-behavior: auto !important;
   }
@@ -290,7 +290,7 @@ article h2 a {
 }
 article h2 a:hover,
 article h2 a:focus {
-  color: #c22 !important;
+  color: var(--link-color) !important;
   text-decoration: underline;
 }
 article pre[class*=language-],
