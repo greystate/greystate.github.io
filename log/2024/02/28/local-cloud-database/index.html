@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="/assets/greystate.css">
+<link rel="stylesheet" href="/assets/prism-light.css" media="(prefers-color-scheme: light)">
+<link rel="stylesheet" href="/assets/prism-dark.css" media="(prefers-color-scheme: dark)">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Connecting To The Umbraco Cloud Database From Your Local Instance — Greystate Blog</title>
+<script src="/assets/app.min.js" defer></script><script src="/assets/prism.min.js" defer></script>
+	
+</head>
+<body>
+<a class="skipper" href="#content">Skip to content</a><nav class="navbar"><ul class="links">
+<li><a href="/">Home</a></li>
+<li>
+<a href="/log/" aria-current="location">Blog</a><ul class="archives">
+<li><a href="/log/2024/" tabindex="-1" aria-current="location">2024</a></li>
+<li><a href="/log/2023/" tabindex="-1">2023</a></li>
+<li><a href="/log/2022/" tabindex="-1">2022</a></li>
+<li><a href="/log/2021/" tabindex="-1">2021</a></li>
+<li><a href="/log/2020/" tabindex="-1">2020</a></li>
+<li><a href="/log/2019/" tabindex="-1">2019</a></li>
+<li><a href="/log/2008/" tabindex="-1">2008</a></li>
+</ul>
+</li>
+<li><a href="/who/">About</a></li>
+<li>
+<a href="/resources/">Resources</a><ul class="res">
+<li><a href="https://greystate.dk/resources/objredux/" tabindex="-1" target="_blank">Object Builder</a></li>
+<li><a href="https://greystate.dk/resources/umbraco/razor-reference/" tabindex="-1" target="_blank">Razor QuickRef</a></li>
+</ul>
+</li>
+</ul></nav><article id="content">
+
+<h1 id="connecting-to-the-umbraco-cloud-database-from-your-local-instance">Connecting To The Umbraco Cloud Database From Your Local Instance</h1>
+
+<abbr class="date" title="2024-02-28T21:44:00+0100"><a rel="bookmark" href="https://greystate.dk/log/2024/02/28/local-cloud-database/"><time datetime="2024-02-28T21:44:00+0100">28 Feb, 2024</time></a></abbr>
+
+<p>Today I had a problem where part of the solution was to temporarily connect my local clone of
+an Umbraco Cloud project to its online Development database, and run the project, and I was
+immediately stuck on step 1 — how the hell do I do that???? 😂</p>
+
+<p>(The reason for this was to trigger some migrations to run on the DEV database - but already I’m
+just relayong information that I don’t understand myself).</p>
+
+<p>Of course I looked in the various <code>appsettings.*.json</code> files for something along the lines of
+<code>UmbracoDSN</code> or <code>ConnectionString</code> but nothing turned up. The docs did say that I am able to
+add the following to the JSON:</p>
+
+<pre><code class="lang-json">"ConnectionStrings": {
+	"UmbracoDbDSN": "&lt;connection string here&gt;"
+}
+</code></pre>
+
+<p>But hey! it’s me — I have no idea first of all, <em>what</em> to put in that string (I know all the parts,
+but I’ve also seen enough connection strings to know that they need to be in a very specific
+format that I probably couldn’t guess, or google (with Duck Duck Go, obviously), given I barely
+know which SQL Server version it currently is, so…).</p>
+
+<p>Secondly, I have no idea where this goes in the settings file (is it a top-level key, or does
+it belong under “Umbraco”?). Luckily, there are kind people on the internet that one can ask
+about such problems! (Thanks <a href="https://cultiv.social/@sebastiaan" target="_blank" rel="noopener noreferrer">Sebastiaan</a>!).</p>
+
+<h2 id="here’s-how-you-do-it">Here’s How You Do It</h2>
+
+<p>In the Cloud portal you open the Connection details from the Settings dropdown and make sure that
+your IP address is on the list of allowed IPs.</p>
+
+<p>Then copy each of the four pieces of data, and insert them into this snippet in place of their
+all-caps placeholders:</p>
+
+<pre><code class="lang-json">  "ConnectionStrings": {
+    "umbracoDbDSN": "Server=tcp:SERVER_NAME;Database=DATABASE;User ID=LOGIN;Password=PASSWORD;Trusted_Connection=False;Encrypt=True;",
+    "umbracoDbDSN_ProviderName": "Microsoft.Data.SqlClient"
+  }
+</code></pre>
+
+<p>Then paste the snippet into either <code>appsettings.json</code> or <code>appsettings.Development.json</code> at the
+root level, e.g.:</p>
+
+<pre><code class="lang-json">{
+	"$schema": "...",
+	"Serilog": { ... },
+	"Umbraco": { ... },
+
+	"ConnectionStrings": { ... }
+}
+</code></pre>
+
+<p>Now you can <code>dotnet run</code> your local instance and it will use the Cloud database, which — I must
+say — <strong><em>you should probably only do if you have a very good reason, no?</em></strong></p>
+
+</article><footer><img class="logo" src="/images/greystate_logo.png" width="300" height="125" alt="Greystate"></footer>
+</body>
+</html>
