@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Easy Color-changing SVG from CSS — Greystate Blog</title>
+<link rel="stylesheet" href="/assets/greystate.css">
+<link rel="stylesheet" href="/assets/prism-light.css" media="(prefers-color-scheme: light)">
+<link rel="stylesheet" href="/assets/prism-dark.css" media="(prefers-color-scheme: dark)">
+<script src="/assets/app.min.js" defer></script><script src="/assets/prism.min.js" defer></script>
+	
+</head>
+<body>
+<a class="skipper" href="#content">Skip to content</a><nav class="navbar"><ul class="links">
+<li><a href="/">Home</a></li>
+<li>
+<a href="/log/" aria-current="location">Blog</a><ul class="archives">
+<li><a href="/log/2025/" tabindex="-1" aria-current="location">2025</a></li>
+<li><a href="/log/2024/" tabindex="-1">2024</a></li>
+<li><a href="/log/2023/" tabindex="-1">2023</a></li>
+<li><a href="/log/2022/" tabindex="-1">2022</a></li>
+<li><a href="/log/2021/" tabindex="-1">2021</a></li>
+<li><a href="/log/2020/" tabindex="-1">2020</a></li>
+<li><a href="/log/2019/" tabindex="-1">2019</a></li>
+<li><a href="/log/2008/" tabindex="-1">2008</a></li>
+</ul>
+</li>
+<li><a href="/who/">About</a></li>
+<li><a href="/articles/">Articles</a></li>
+<li>
+<a href="/resources/">Resources</a><ul class="res">
+<li><a href="https://greystate.dk/resources/objredux/" tabindex="-1" target="_blank">Object Builder</a></li>
+<li><a href="https://greystate.dk/resources/umbraco/razor-reference/" tabindex="-1" target="_blank">Razor QuickRef</a></li>
+</ul>
+</li>
+</ul></nav><article id="content">
+
+<h1 id="easy-color-changing-svg-from-css">Easy Color-changing SVG from CSS</h1>
+
+<abbr class="date" title="2025-06-12T08:14:00+0200"><a rel="bookmark" href="https://greystate.dk/log/2025/06/12/easy-svg/"><time datetime="2025-06-12T08:14:00+0200">12 Jun, 2025</time></a></abbr>
+
+<p>Yesterday, by some weird metric of “Huh, why can’t I just do this?”, I managed to find
+a super-easy way to apply an SVG icon purely from CSS – <em>including the ability to change its
+color</em> – i.e. without having to embed the SVG code directly in the HTML.</p>
+
+<p>It looks like this:</p>
+
+<pre><code class="lang-css">.iconlink {
+	color: blue;
+}
+
+.iconlink::after {
+	content: "";
+	display: block;
+	inline-size: 24px;
+	block-size: 24px;
+	background-color: currentcolor;
+	mask: url(icon-arrow.svg) center no-repeat;
+}
+</code></pre>
+
+<p>So instead of applying the SVG as a background image, we create a block of color and use the SVG
+as a mask. The result is a graphic in whatever color you’ve set as the background color, which can
+be transitioned as usual. In the example here I use <code>currentcolor</code> to have it take whatever color the
+link is but it can be any color really – it could even be a gradient, huh?</p>
+
+<p>I’m sure I’ll find out that someone else has done this before because it seems “almost too easy…”, but
+for now, I’m just super happy that I finally found a way to get around one of my highest ranking
+annoyances when doing frontend development.</p>
+
+</article><footer><img class="logo" src="/images/greystate_logo.png" width="300" height="125" alt="Greystate"></footer>
+</body>
+</html>

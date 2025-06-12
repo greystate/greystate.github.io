@@ -253,6 +253,7 @@ article h1 {
   background: var(--bgcolor-semi-trans);
   font-size: 2.2em;
   letter-spacing: -0.07em;
+  text-wrap: balance;
   padding: 0 0 0 1em;
   display: flex;
   justify-content: space-between;
