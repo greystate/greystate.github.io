@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Reduced Testcase</title>
+	<style>
+	body { background: white; color: black; padding: 2rem; font-family: system-ui, sans-serif; line-height: 1.4; }
+
+	.card {
+		display: inline-block;
+		min-block-size: 10rem;
+		border-radius: 10px;
+		padding: 1rem;
+		background: rebeccapurple;
+		color: yellow;
+	}
+
+	code { color: maroon; background: lightgray; display: inline-block; padding: 1px 3px; border-radius: 2px; }
+	.text { max-inline-size: 60ch; }
+
+	@supports (color: contrast-color(rebeccapurple)) {
+		.card { color: contrast-color(rebeccapurple); }
+	}
+	</style>
+</head>
+<body>
+<h1>Reduced testcase for <code>contrast-color()</code> support</h1>
+
+<div class="card">
+	<h2>Card Header</h2>
+	<div class="text">
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+			ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+		</p>
+	</div>
+</div>
+
+<div class="explainer text">
+	<p>
+		The <code>.card</code> above should have readable (white) text inside, as its color is set
+		using the <code>color-contrast()</code> function, passing in the background color.
+		 It's guarded by a <code>@supports()</code> rule to make sure the browser can do this.
+	</p>
+	<p>
+		If there's no readable text, the browser seems to support the function, but apparently decides
+		to just return the color that was passed in.
+	</p>
+	<p>
+		If the text is yellow, the browser either doesn't understand <code>@supports()</code>, or it
+		correctly understands it, but doesn't support the <code>contrast-color()</code> function.
+	</p>
+</div>
+
+
+</body>
+</html>
